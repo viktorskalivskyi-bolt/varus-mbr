@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VARUS × Bolt — MBR draft (Aug 2026)</title>
+<style>
+  :root {
+    --ink: #1d2b24;
+    --muted: #5d6b64;
+    --line: #dce4df;
+    --soft: #f3f6f4;
+    --green: #2f8b57;
+    --mint: #dff3e8;
+    --dark: #173f2b;
+    --red: #b8452a;
+    --red-soft: #fdf1ec;
+    --amber: #a8761c;
+    --amber-soft: #fdf6e9;
+    --blue: #2f6f8b;
+    --white: #fff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #eef1ee;
+    color: var(--ink);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 20px 80px; }
+  .slide {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+  }
+  .eyebrow {
+    display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+    font-size: 12px; font-weight: 700; letter-spacing: .02em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+  }
+  .pill { padding: 5px 11px; border-radius: 999px; background: var(--soft); color: var(--muted); }
+  .pill.on { background: var(--green); color: var(--white); }
+  .pill.mint { background: var(--mint); color: var(--dark); }
+  h1 { font-size: 32px; line-height: 1.2; margin: 0 0 10px; letter-spacing: -.01em; }
+  h2 { font-size: 21px; margin: 0 0 6px; letter-spacing: -.01em; }
+  h3 { font-size: 14px; margin: 22px 0 8px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+  p { margin: 0 0 10px; }
+  .lead { color: var(--muted); font-size: 15px; }
+  .num { font-variant-numeric: tabular-nums; }
+  .note { font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+  .callout {
+    border-radius: 12px; padding: 16px 18px; margin: 16px 0;
+    border: 1px solid var(--line); background: var(--soft);
+  }
+  .callout .ttl { font-weight: 700; margin-bottom: 6px; }
+  .callout.good { background: var(--mint); border-color: #bfe3cf; }
+  .callout.good .ttl { color: var(--dark); }
+  .callout.bad { background: var(--red-soft); border-color: #f2d5c9; }
+  .callout.bad .ttl { color: var(--red); }
+  .callout.warn { background: var(--amber-soft); border-color: #f0e2c4; }
+  .callout.warn .ttl { color: var(--amber); }
+  .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 18px 0 6px; }
+  .kpi { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .kpi .v { font-size: 24px; font-weight: 700; letter-spacing: -.02em; }
+  .kpi .l { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+  .kpi.good .v { color: var(--green); }
+  .kpi.bad .v { color: var(--red); }
+  .kpi.warn .v { color: var(--amber); }
+  .cols2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .cols3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .box { border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .box .hd { font-weight: 700; font-size: 14px; margin-bottom: 10px; }
+  .box ul { margin: 0; padding-left: 18px; }
+  .box li { margin-bottom: 7px; font-size: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-top: 8px; }
+  th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 700; }
+  td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.hl td { background: #f6fbf8; }
+  tr.warnrow td { background: var(--red-soft); }
+  .chart { margin-top: 6px; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); margin: 6px 0 2px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .hr { height: 1px; background: var(--line); margin: 24px 0; border: 0; }
+  footer { color: var(--muted); font-size: 12.5px; padding: 0 12px; }
+  @media (max-width: 860px) {
+    .kpis, .cols2, .cols3 { grid-template-columns: 1fr; }
+    .slide { padding: 22px 18px; }
+    h1 { font-size: 26px; }
+  }
+  @media print {
+    body { background: #fff; }
+    .slide { break-inside: avoid; page-break-inside: avoid; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ 0. Cover / key message ============ -->
+  <section class="slide">
+    <div class="eyebrow">
+      <span class="pill on">MBR draft</span>
+      <span class="pill mint">VARUS × Bolt Food UA</span>
+      <span class="pill">Дані до 26 Aug 2026</span>
+      <span class="pill">Internal draft</span>
+    </div>
+    <h1>VARUS MBR — перший драфт</h1>
+    <p class="lead">
+      Джерела: <span class="num">main.ng_delivery.dim_order_delivery</span>,
+      <span class="num">dim_basket_item_delivery</span>,
+      <span class="num">dim_food_getplace_item_price_comparison</span>.
+      Ramp-план 3 → 5 → 8 → 10 млн грн — робоча гіпотеза з контрактних переговорів,
+      підтвердити перед відправкою партнеру.
+    </p>
+
+    <div class="callout good">
+      <div class="ttl">Головний меседж на 1 слайд</div>
+      Національний лонч з травня перевиконує рамп: серпень уже 10.3 млн грн GMV за 26 днів
+      при плані 10. Операційна якість не підтягнулась за продажами — DT і NDR гірші за пірів,
+      а recurring-проблеми (OOS, години зборки, CZ) не закриті. Наступні 6 місяців — вікно,
+      поки VARUS єдиний великий grocery у Food Delivery. Після лончу інших гравців цей імпакт закінчиться.
+    </div>
+
+    <div class="kpis">
+      <div class="kpi good"><div class="v">10.3 млн грн</div><div class="l">GMV серпень · 26 днів</div></div>
+      <div class="kpi good"><div class="v">103%</div><div class="l">Серпень vs план 10 млн</div></div>
+      <div class="kpi"><div class="v">6.5k</div><div class="l">MAU серпень</div></div>
+      <div class="kpi warn"><div class="v">35.8 хв</div><div class="l">DT p50 серпень</div></div>
+    </div>
+  </section>
+
+  <!-- ============ 1. Launch ============ -->
+  <section class="slide">
+    <h2>1. Лонч: що реально сталось</h2>
+    <p>Пілот з 19 Sep 2025 був мікроскопічний — приблизно 150–250 замовлень на місяць.
+       Національний лонч — травень 2026: стрибок з 0.17 до 3.75 млн грн за місяць.</p>
+    <div class="cols3">
+      <div class="kpi"><div class="v">11 міст</div><div class="l">Покриття</div></div>
+      <div class="kpi"><div class="v">~55 live</div><div class="l">Сторів із замовленнями в серпні</div></div>
+      <div class="kpi"><div class="v">74</div><div class="l">Унікальних provider_id за історію</div></div>
+    </div>
+    <h3>Delivered GMV, млн грн</h3>
+    <div class="chart" id="ch-gmv"></div>
+    <div class="note">Source: dim_order_delivery · delivered GMV local · Sep 2025 – 26 Aug 2026</div>
+  </section>
+
+  <!-- ============ 2. Sales vs ramp ============ -->
+  <section class="slide">
+    <h2>2. Продажі vs рамп</h2>
+    <div class="callout warn">
+      <div class="ttl">Підтвердити план перед слайдом</div>
+      У драфті рамп = 3 / 5 / 8 / 10 млн грн (травень–серпень). Якщо в контракті інші суми
+      або план у EUR — відсотки перевиконання зміняться.
+    </div>
+    <h3>Delivered GMV vs ramp plan, млн грн</h3>
+    <div class="chart" id="ch-ramp"></div>
+    <table>
+      <thead><tr>
+        <th>Місяць</th><th class="r">План, млн</th><th class="r">Факт GMV, млн</th>
+        <th class="r">% плану</th><th class="r">Замовлення</th><th class="r">AOV, грн</th><th class="r">GMV, €k</th>
+      </tr></thead>
+      <tbody>
+        <tr class="hl"><td>Травень</td><td class="r">3.0</td><td class="r">3.75</td><td class="r">125%</td><td class="r">6 774</td><td class="r">607</td><td class="r">73</td></tr>
+        <tr class="hl"><td>Червень</td><td class="r">5.0</td><td class="r">5.22</td><td class="r">104%</td><td class="r">7 966</td><td class="r">698</td><td class="r">101</td></tr>
+        <tr><td>Липень</td><td class="r">8.0</td><td class="r">7.96</td><td class="r">99%</td><td class="r">10 341</td><td class="r">809</td><td class="r">156</td></tr>
+        <tr class="hl"><td>Серпень (26 днів)</td><td class="r">10.0</td><td class="r">10.28</td><td class="r">103%</td><td class="r">13 525</td><td class="r">827</td><td class="r">199</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Run-rate серпня — приблизно 12.2 млн грн на повний місяць, якщо темп утримається.
+       AOV зріс з 607 до 827 грн (+36%): це кошик, а не лише трафік.</p>
+  </section>
+
+  <!-- ============ 3. Users ============ -->
+  <section class="slide">
+    <h2>3. Юзери: прийшло / активувалось / Bolt+</h2>
+    <p class="lead">«Прийшло» = перший VARUS-ордер юзера в цьому місяці. «Активувалось» = мінімум одне
+       delivered у місяці. «First на Bolt» = перший Delivery-ордер на платформі взагалі.</p>
+    <h3>Активні, нові та активовані юзери</h3>
+    <div class="chart" id="ch-users"></div>
+    <table>
+      <thead><tr>
+        <th>Місяць</th><th class="r">MAU</th><th class="r">Нові на VARUS</th><th class="r">З delivered</th>
+        <th class="r">Repeat ≥2</th><th class="r">First на Bolt</th><th class="r">Bolt+ юзери</th><th class="r">Bolt+ % ордерів</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Травень</td><td class="r">3 951</td><td class="r">3 906</td><td class="r">3 679</td><td class="r">1 146</td><td class="r">358</td><td class="r">537</td><td class="r">14.2%</td></tr>
+        <tr><td>Червень</td><td class="r">3 757</td><td class="r">2 763</td><td class="r">3 571</td><td class="r">1 273</td><td class="r">368</td><td class="r">467</td><td class="r">12.9%</td></tr>
+        <tr><td>Липень</td><td class="r">4 882</td><td class="r">3 324</td><td class="r">4 704</td><td class="r">1 807</td><td class="r">413</td><td class="r">614</td><td class="r">13.4%</td></tr>
+        <tr class="hl"><td>Серпень</td><td class="r">6 526</td><td class="r">4 262</td><td class="r">6 177</td><td class="r">2 346</td><td class="r">605</td><td class="r">806</td><td class="r">12.9%</td></tr>
+      </tbody>
+    </table>
+    <div class="cols3" style="margin-top:16px">
+      <div class="kpi good"><div class="v">+34%</div><div class="l">MAU липень → серпень</div></div>
+      <div class="kpi"><div class="v">36%</div><div class="l">Repeat share серпень</div></div>
+      <div class="kpi"><div class="v">~13%</div><div class="l">Bolt+ у замовленнях</div></div>
+    </div>
+    <p class="note">Bolt+ стабільний ~13% ордерів і ~12.5% MAU — не драйвер росту.
+       Ріст іде з нових grocery-юзерів (4.3k нових у серпні), не з підписки.</p>
+  </section>
+
+  <!-- ============ 4. Spend ============ -->
+  <section class="slide">
+    <h2>4. Спенди кампаній — скільки інвестуємо</h2>
+    <h3>Campaign spend, тис. грн (local)</h3>
+    <div class="chart" id="ch-spend"></div>
+    <table>
+      <thead><tr>
+        <th>Місяць</th><th class="r">Bolt, грн</th><th class="r">Bolt, €</th>
+        <th class="r">Provider, грн</th><th class="r">Provider, €</th><th class="r">Bolt % GMV</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Травень</td><td class="r">107k</td><td class="r">2.1k</td><td class="r">119k</td><td class="r">2.3k</td><td class="r">2.9%</td></tr>
+        <tr><td>Червень</td><td class="r">1k</td><td class="r">0.02k</td><td class="r">343k</td><td class="r">6.7k</td><td class="r">0.0%</td></tr>
+        <tr><td>Липень</td><td class="r">203k</td><td class="r">4.0k</td><td class="r">727k</td><td class="r">14.2k</td><td class="r">2.5%</td></tr>
+        <tr class="hl"><td>Серпень</td><td class="r">436k</td><td class="r">8.4k</td><td class="r">842k</td><td class="r">16.3k</td><td class="r">4.2%</td></tr>
+      </tbody>
+    </table>
+    <p class="note">За чотири місяці Bolt вклав ~€14.5k, партнер ~€39.5k. У серпні Bolt-spend майже весь
+       у DF та AM (€6.2k DF, €7.8k AM; menu €2.2k; ULC activation €0.5k). Партнерська частка знижок
+       більша за Bolt — це варто сказати прямо: ми не «викуповуємо» GMV.</p>
+  </section>
+
+  <!-- ============ 5. Ops ============ -->
+  <section class="slide">
+    <h2>5. Операційка: що повторюється і не закривається</h2>
+    <div class="callout bad">
+      <div class="ttl">DT 45 хв — реальний розрив vs інші гравці</div>
+      1 Jul – 26 Aug: VARUS DT p50 = 34.6 хв, avg = 40.2 хв, 26.6% delivered довше 45 хв.
+      Інші 3P stores UA: p50 23.5 хв, лише 7% довше 45 хв. У серпні гірше: p50 35.8 / p90 70.2 / avg 42.5.
+    </div>
+    <h3>Delivery time p50, хв · Jul 1 – Aug 26 · delivered</h3>
+    <div class="chart" id="ch-dt"></div>
+    <table>
+      <thead><tr>
+        <th>Мережа</th><th class="r">Ордери</th><th class="r">NDR</th><th class="r">Bad rate</th>
+        <th class="r">Late</th><th class="r">DT p50</th><th class="r">% &gt; 45 хв</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Інші 3P stores</td><td class="r">39 734</td><td class="r">3.2%</td><td class="r">13.1%</td><td class="r">14.0%</td><td class="r">23.5</td><td class="r">7.0%</td></tr>
+        <tr><td>LOKO</td><td class="r">9 694</td><td class="r">1.3%</td><td class="r">n/a*</td><td class="r">n/a*</td><td class="r">26.8</td><td class="r">16.1%</td></tr>
+        <tr><td>Rukavychka</td><td class="r">1 469</td><td class="r">4.8%</td><td class="r">15.7%</td><td class="r">10.6%</td><td class="r">26.7</td><td class="r">11.8%</td></tr>
+        <tr class="warnrow"><td><b>VARUS</b></td><td class="r">23 866</td><td class="r">6.6%</td><td class="r">19.4%</td><td class="r">20.3%</td><td class="r">34.6</td><td class="r">26.6%</td></tr>
+      </tbody>
+    </table>
+    <div class="note">*У LOKO bad / late у тегу 3P Ent майже не розмічені — дивитись на NDR і DT.
+      Source: dim_order_delivery · store_3p_ent UA · 1 Jul – 26 Aug 2026</div>
+
+    <div class="cols2" style="margin-top:18px">
+      <div class="box">
+        <div class="hd">Не закривається (recurring)</div>
+        <ul>
+          <li>OOS / «provider asked to cancel» — 404 фейли Jul–Aug, 314k грн втраченого GMV.
+              Каталог показує наявність, а зборка знаходить дірки.</li>
+          <li>Години та «закрито» — 251 фейл, 242k грн. Вечірні відмови зборки тягнуться з травня.</li>
+          <li>NDR: 8.4% → 5.8% → 4.7% → знову 8.1% у серпні. Це регрес, а не разовий спайк.</li>
+          <li>Quantity defects, ODR близько 50% (Looker CVP, липень) при SKU availability ~98%.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="hd">CZ / IT — backlog на стороні партнера</div>
+        <ul>
+          <li>39 фейлів Jul–Aug з причиною «issue with the integration system» — мала частка NDR,
+              але симптом нестабільного CZ.</li>
+          <li>POS / Corezoid 500 на модифікаціях замовлення: губляться pickup-коди та чеки,
+              ескалейтовано в engineering.</li>
+          <li>Фіди стоків і цін: price_mismatch і «немає товару» при зеленому каталозі.</li>
+          <li>Пряма інтеграція без CZ ефективніша — внутрішня позиція grocery-команди з травня.
+              Для наступних гравців шар CZ не повторювати.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. CVP ============ -->
+  <section class="slide">
+    <h2>6. CVP — візуальний імпакт</h2>
+    <p>Те, що можна показати цифрами без Looker: більший кошик і більше людей, але гірший
+       досвід доставки.</p>
+    <div class="cols3">
+      <div class="box">
+        <div class="hd" style="color:var(--green)">Виграли</div>
+        <ul>
+          <li>AOV 607 → 827 грн</li>
+          <li>MAU 4.0k → 6.5k</li>
+          <li>GMV ×2.7 з травня</li>
+          <li>11 міст, nationwide grocery у FD</li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="hd">Тримає</div>
+        <ul>
+          <li>Паритет цін Bolt = Glovo (index 1.00)</li>
+          <li>Партнерські знижки більші за Bolt-spend</li>
+          <li>Repeat 36% у серпні</li>
+          <li>Bolt+ ~13% — лояльний шар</li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="hd" style="color:var(--red)">Ламає CVP</div>
+        <ul>
+          <li>DT +11 хв vs інші 3P</li>
+          <li>Кожне 4-те delivered довше 45 хв</li>
+          <li>NDR удвічі вищий за пірів</li>
+          <li>Вечір, OOS, staffing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. Pricing ============ -->
+  <section class="slide">
+    <h2>7. Ціноутворення: чому «маркап ×2 vs офлайн»</h2>
+    <div class="callout good">
+      <div class="ttl">Висновок з даних</div>
+      Bolt не накручує другу націнку поверх фіду VARUS. Якщо клієнт бачить ×2 до полиці —
+      джерело в ціні, яку віддає CZ / PIM, а не в комісії Bolt.
+    </div>
+    <table>
+      <thead><tr><th>Перевірка</th><th>Вибірка</th><th>Результат</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Ціна клієнта / ціна провайдера (рядки кошика, серпень, delivered)</td>
+          <td>86k SKU-рядків</td>
+          <td>avg = p50 = p90 = 1.00; жодної позиції ≥ 1.8×</td>
+        </tr>
+        <tr>
+          <td>GetPlace: Bolt vs Glovo, matched SKU</td>
+          <td>312k пар, scrape week 17 Aug</td>
+          <td>price index avg 1.004 / p50 1.00; 0.0% позицій ×2 vs Glovo</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Що сказати на MBR</h3>
+    <ol style="margin:0;padding-left:20px">
+      <li style="margin-bottom:6px">Онлайн VARUS на Bolt = онлайн VARUS на Glovo.</li>
+      <li style="margin-bottom:6px">Онлайн не дорівнює офлайн-полиці — це рішення мережі або помилка фіду;
+          розібрати на 20 SKU зі скріном полиці vs додаток.</li>
+      <li>Поки фікс не зроблений, сприйняття «дорого vs магазин» їсть конверсію незалежно від промо.</li>
+    </ol>
+  </section>
+
+  <!-- ============ 8. Action plan ============ -->
+  <section class="slide">
+    <h2>8. Екшн-план на 6 місяців (Sep 2026 – Feb 2027)</h2>
+    <table>
+      <thead><tr><th>Коли</th><th>Що</th><th>Навіщо</th><th>Owner (драфт)</th></tr></thead>
+      <tbody>
+        <tr><td>Q3–Q4</td><td>DT p50 ≤ 30 хв, частка &gt; 45 хв ≤ 12%</td>
+            <td>Закрити головний розрив vs піри до лончу інших grocery</td><td>VARUS ops + Bolt courier / zone</td></tr>
+        <tr><td>Q3</td><td>Staffing, години, вечірня зборка — SLA по сторах</td>
+            <td>Прибрати recurring NDR 19:00–22:00</td><td>VARUS store ops</td></tr>
+        <tr><td>Q3–Q4</td><td>CZ backlog: стоки, ціни, POS 500, pickup code</td>
+            <td>Не тягнути той самий IT-борг у наступний лонч</td><td>VARUS IT / CZ + Bolt integrations</td></tr>
+        <tr><td>Q4</td><td>Офлайн-паритет цін: аудит топ-SKU, фікс фіду</td>
+            <td>Прибрати сприйняття ×2</td><td>VARUS commercial + PIM</td></tr>
+        <tr><td>H2 – Q1</td><td>Банери та in-app: Back to school, Oktoberfest, back to routine</td>
+            <td>Зафіксувати share of voice, поки VARUS єдиний великий grocery у FD</td><td>Bolt grocery + VARUS marketing</td></tr>
+        <tr class="hl"><td>Q1 2027</td><td>Лонч інших гравців у FD</td>
+            <td>Імпакт «єдиного nationwide grocery» закінчиться — DT і availability мають бути гігієною, а не USP</td>
+            <td>Bolt grocery</td></tr>
+      </tbody>
+    </table>
+    <div class="callout warn">
+      <div class="ttl">Повідомлення партнеру</div>
+      Зараз VARUS отримує непропорційний імпакт у Food Delivery, бо немає співмірних
+      grocery-конкурентів на платформі. Цей імпакт скінчиться, додаткові партнери будуть.
+      Хто першим закриє DT і наявність — той залишиться default-вибором.
+    </div>
+  </section>
+
+  <!-- ============ 9. Playbook ============ -->
+  <section class="slide">
+    <h2>9. Playbook: наступні кроки при лончі інших гравців</h2>
+    <table>
+      <thead><tr><th>Урок VARUS</th><th>Що зробити на день 0 з наступним партнером</th></tr></thead>
+      <tbody>
+        <tr><td>CZ як прошарок = латентність фіксу багів</td>
+            <td>Прямий API або перевірений integrator. CZ лише якщо немає альтернативи, з SLA на інциденти.</td></tr>
+        <tr><td>Лонч без evening staffing</td>
+            <td>Години прийому = реальні години зборки. Краще коротше вікно, ніж фейли о 21:00.</td></tr>
+        <tr><td>Каталог зелений, полиця порожня</td>
+            <td>Stock sync щодня та алерт на quantity-defect з першого тижня, а не з третього місяця.</td></tr>
+        <tr><td>DT 35+ хв як норма</td>
+            <td>Ціль p50 ≤ 30 хв у лонч-місті до масштабування на 10+ сторів.</td></tr>
+        <tr><td>Ціни фіду не дорівнюють полиці</td>
+            <td>Чек-лист: 30 SKU полиця vs app vs Glovo до go-live.</td></tr>
+        <tr><td>Банери після того, як «вже росте»</td>
+            <td>In-app пакет з тижня лончу (головна, сторіс, DF), щоб не віддати attention пізнішому гравцю.</td></tr>
+        <tr><td>Рамп без спільного дашборду</td>
+            <td>Один weekly pack: GMV vs plan, NDR, DT, OOS, spend — як цей MBR, а не ad-hoc у Slack.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ 10. Missing ============ -->
+  <section class="slide">
+    <h2>Ще немає в драфті — потрібні вхідні</h2>
+    <div class="cols2">
+      <div class="box">
+        <div class="hd">Дані</div>
+        <ul>
+          <li>Банерна підтримка в додатку: impressions та incremental GMV немає в Databricks —
+              потрібен витяг з ads / #ua-sales-retail-ads.</li>
+          <li>Офіційний рамп і KPI з контракту (зараз гіпотеза 3 / 5 / 8 / 10 млн грн).</li>
+          <li>Looker CVP / ODR — MCP недоступний на момент збірки.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="hd">Матеріали</div>
+        <ul>
+          <li>Скріни 20 SKU: полиця vs Bolt — для слайду про ×2.</li>
+          <li>Список CZ-тікетів зі статусами та датами.</li>
+          <li>Дата завершення FD-імпакту та лонч наступного гравця (ATB чи інші).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Internal draft для MBR з VARUS · зібрано 27 Aug 2026 · дані до 26 Aug 2026 ·
+    Bolt Food UA grocery
+  </footer>
+</div>
+
+<script>
+const C = {
+  green: '#2f8b57', mint: '#8fd3b3', grey: '#a9b7b0', greyDark: '#6f7f78',
+  red: '#b8452a', amber: '#c99a3c', blue: '#3f7f9c', line: '#dce4df', muted: '#5d6b64'
+};
+
+function fmt(v) {
+  if (Math.abs(v) >= 1000) return v.toLocaleString('uk-UA');
+  return String(Math.round(v * 100) / 100);
+}
+
+function axisTicks(max, count) {
+  const step = max / count;
+  const out = [];
+  for (let i = 0; i <= count; i++) out.push(step * i);
+  return out;
+}
+
+function niceMax(max) {
+  const mag = Math.pow(10, Math.floor(Math.log10(max)));
+  const n = Math.ceil(max / (mag / 2)) * (mag / 2);
+  return n === max ? max + mag / 2 : n;
+}
+
+// ---- generic frame -------------------------------------------------
+function frame(opts) {
+  const W = 960, H = opts.height || 260;
+  const padL = opts.padL || 52, padR = 18, padT = 14, padB = 34;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const max = opts.max;
+  const ticks = axisTicks(max, 4);
+  let g = '';
+  ticks.forEach(t => {
+    const y = padT + plotH - (t / max) * plotH;
+    g += `<line x1="${padL}" y1="${y.toFixed(1)}" x2="${W - padR}" y2="${y.toFixed(1)}" stroke="${C.line}" stroke-width="1"/>`;
+    g += `<text x="${padL - 8}" y="${(y + 4).toFixed(1)}" text-anchor="end" font-size="11" fill="${C.muted}">${fmt(t)}</text>`;
+  });
+  return { W, H, padL, padR, padT, padB, plotW, plotH, grid: g, max };
+}
+
+function xLabels(f, cats) {
+  const bw = f.plotW / cats.length;
+  return cats.map((c, i) => {
+    const x = f.padL + bw * i + bw / 2;
+    return `<text x="${x.toFixed(1)}" y="${f.padT + f.plotH + 20}" text-anchor="middle" font-size="11" fill="${C.muted}">${c}</text>`;
+  }).join('');
+}
+
+function legend(series) {
+  return '<div class="legend">' + series.map(s =>
+    `<span><i class="dot" style="background:${s.color}"></i>${s.name}</span>`).join('') + '</div>';
+}
+
+// ---- line chart ----------------------------------------------------
+function lineChart(el, cfg) {
+  const all = cfg.series.flatMap(s => s.data);
+  const max = niceMax(Math.max.apply(null, all));
+  const f = frame({ height: cfg.height, max: max });
+  const bw = f.plotW / cfg.categories.length;
+  const px = i => f.padL + bw * i + bw / 2;
+  const py = v => f.padT + f.plotH - (v / max) * f.plotH;
+
+  let body = '';
+  cfg.series.forEach(s => {
+    const pts = s.data.map((v, i) => `${px(i).toFixed(1)},${py(v).toFixed(1)}`).join(' ');
+    if (cfg.fill) {
+      body += `<polygon points="${px(0).toFixed(1)},${(f.padT + f.plotH).toFixed(1)} ${pts} ${px(s.data.length - 1).toFixed(1)},${(f.padT + f.plotH).toFixed(1)}" fill="${s.color}" opacity="0.12"/>`;
+    }
+    body += `<polyline points="${pts}" fill="none" stroke="${s.color}" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>`;
+    body += s.data.map((v, i) =>
+      `<circle cx="${px(i).toFixed(1)}" cy="${py(v).toFixed(1)}" r="3.4" fill="#fff" stroke="${s.color}" stroke-width="2"><title>${s.name}: ${fmt(v)}</title></circle>`).join('');
+  });
+
+  el.innerHTML = (cfg.series.length > 1 ? legend(cfg.series) : '') +
+    `<svg viewBox="0 0 ${f.W} ${f.H}" width="100%" role="img">${f.grid}${body}${xLabels(f, cfg.categories)}</svg>`;
+}
+
+// ---- bar chart -----------------------------------------------------
+function barChart(el, cfg) {
+  const stacked = !!cfg.stacked;
+  let max;
+  if (stacked) {
+    max = niceMax(Math.max.apply(null, cfg.categories.map((c, i) =>
+      cfg.series.reduce((a, s) => a + s.data[i], 0))));
+  } else {
+    max = niceMax(Math.max.apply(null, cfg.series.flatMap(s => s.data).concat(cfg.refLine ? [cfg.refLine.value] : [])));
+  }
+  const f = frame({ height: cfg.height, max: max });
+  const slot = f.plotW / cfg.categories.length;
+  const groupW = slot * 0.6;
+  const n = stacked ? 1 : cfg.series.length;
+  const barW = groupW / n;
+  const py = v => f.padT + f.plotH - (v / max) * f.plotH;
+
+  let body = '';
+  cfg.categories.forEach((cat, i) => {
+    const x0 = f.padL + slot * i + (slot - groupW) / 2;
+    if (stacked) {
+      let acc = 0;
+      cfg.series.forEach(s => {
+        const v = s.data[i];
+        const hh = py(acc) - py(acc + v);
+        body += `<rect x="${x0.toFixed(1)}" y="${py(acc + v).toFixed(1)}" width="${groupW.toFixed(1)}" height="${Math.max(hh, 0).toFixed(1)}" fill="${s.color}" rx="2"><title>${cat} · ${s.name}: ${fmt(v)}</title></rect>`;
+        acc += v;
+      });
+    } else {
+      cfg.series.forEach((s, si) => {
+        const v = s.data[i];
+        const x = x0 + barW * si;
+        const y = py(v);
+        body += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(barW - 3).toFixed(1)}" height="${(f.padT + f.plotH - y).toFixed(1)}" fill="${s.color}" rx="2"><title>${cat} · ${s.name}: ${fmt(v)}</title></rect>`;
+        if (cfg.showValues) {
+          body += `<text x="${(x + (barW - 3) / 2).toFixed(1)}" y="${(y - 5).toFixed(1)}" text-anchor="middle" font-size="11" font-weight="600" fill="${C.muted}">${fmt(v)}</text>`;
+        }
+      });
+    }
+  });
+
+  if (cfg.refLine) {
+    const y = py(cfg.refLine.value);
+    body += `<line x1="${f.padL}" y1="${y.toFixed(1)}" x2="${f.W - f.padR}" y2="${y.toFixed(1)}" stroke="${C.red}" stroke-width="1.6" stroke-dasharray="6 4"/>`;
+    body += `<text x="${f.W - f.padR - 4}" y="${(y - 6).toFixed(1)}" text-anchor="end" font-size="11" font-weight="700" fill="${C.red}">${cfg.refLine.label}</text>`;
+  }
+
+  el.innerHTML = (cfg.series.length > 1 ? legend(cfg.series) : '') +
+    `<svg viewBox="0 0 ${f.W} ${f.H}" width="100%" role="img">${f.grid}${body}${xLabels(f, cfg.categories)}</svg>`;
+}
+
+// ---- render --------------------------------------------------------
+lineChart(document.getElementById('ch-gmv'), {
+  categories: ['Sep25', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug26'],
+  series: [{ name: 'GMV delivered, млн грн', color: C.green,
+    data: [0.03, 0.15, 0.15, 0.21, 0.23, 0.18, 0.23, 0.17, 3.75, 5.22, 7.96, 10.28] }],
+  fill: true, height: 250
+});
+
+barChart(document.getElementById('ch-ramp'), {
+  categories: ['Травень', 'Червень', 'Липень', 'Серпень (26д)'],
+  series: [
+    { name: 'План (гіпотеза)', color: C.grey, data: [3, 5, 8, 10] },
+    { name: 'Факт', color: C.green, data: [3.75, 5.22, 7.96, 10.28] }
+  ],
+  showValues: true, height: 250
+});
+
+lineChart(document.getElementById('ch-users'), {
+  categories: ['Травень', 'Червень', 'Липень', 'Серпень'],
+  series: [
+    { name: 'MAU', color: C.blue, data: [3951, 3757, 4882, 6526] },
+    { name: 'Нові на VARUS', color: C.grey, data: [3906, 2763, 3324, 4262] },
+    { name: 'З delivered', color: C.green, data: [3679, 3571, 4704, 6177] }
+  ],
+  height: 250
+});
+
+barChart(document.getElementById('ch-spend'), {
+  categories: ['Травень', 'Червень', 'Липень', 'Серпень'],
+  series: [
+    { name: 'Bolt', color: C.green, data: [107, 1, 203, 436] },
+    { name: 'VARUS / provider', color: C.mint, data: [119, 343, 727, 842] }
+  ],
+  stacked: true, height: 250
+});
+
+barChart(document.getElementById('ch-dt'), {
+  categories: ['Інші 3P stores', 'LOKO', 'Rukavychka', 'VARUS'],
+  series: [{ name: 'DT p50, хв', color: C.amber, data: [23.5, 26.8, 26.7, 34.6] }],
+  refLine: { value: 45, label: '45 хв' },
+  showValues: true, height: 250
+});
+</script>
+</body>
+</html>
