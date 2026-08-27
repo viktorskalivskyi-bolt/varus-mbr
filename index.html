@@ -6,36 +6,75 @@
 <title>VARUS × Bolt — MBR draft (Aug 2026)</title>
 <style>
   :root {
-    --ink: #1d2b24;
-    --muted: #5d6b64;
-    --line: #dce4df;
-    --soft: #f3f6f4;
-    --green: #2f8b57;
-    --mint: #dff3e8;
-    --dark: #173f2b;
-    --red: #b8452a;
-    --red-soft: #fdf1ec;
+    --ink: #13211b;
+    --muted: #6c7772;
+    --faint: #97a49d;
+    --line: #e6ebe7;
+    --soft: #f3faf5;
+    --green: #0f9d5a;
+    --green-bright: #21c56d;
+    --lime: #b7e04a;
+    --mint: #e9f7ef;
+    --dark: #13211b;
+    --red: #e94b3b;
+    --red-soft: #fff3f0;
     --amber: #a8761c;
-    --amber-soft: #fdf6e9;
-    --blue: #2f6f8b;
+    --amber-soft: #fdf7ea;
+    --blue: #2a8bee;
+    --blue-deep: #1250c8;
+    --blue-soft: #f2f8fc;
     --white: #fff;
+    --page-bg: #eceeec;
+    --shadow: 0 16px 50px rgba(19, 33, 27, .12);
   }
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    background: #eef1ee;
+    background: var(--page-bg);
     color: var(--ink);
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-family: "Avenir Next", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", "Mulish", "Helvetica Neue", Arial, sans-serif;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
-  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 20px 80px; }
+  .toolbar {
+    position: fixed; z-index: 50; top: 16px; left: 50%;
+    width: min(980px, calc(100vw - 28px)); transform: translateX(-50%);
+    display: flex; align-items: center; gap: 10px; padding: 9px 10px;
+    border: 1px solid var(--line); border-radius: 14px;
+    background: rgba(255,255,255,.95); backdrop-filter: blur(14px);
+    box-shadow: 0 8px 30px rgba(19,33,27,.08);
+  }
+  .toolbar b { margin: 0 8px; font-size: 13px; white-space: nowrap; }
+  .toolbar a, .toolbar button {
+    min-height: 38px; display: inline-flex; align-items: center; justify-content: center;
+    padding: 0 13px; border: 1px solid var(--line); border-radius: 10px;
+    background: var(--white); color: var(--ink); font: inherit; font-size: 12px;
+    font-weight: 700; text-decoration: none; cursor: pointer; white-space: nowrap;
+  }
+  .toolbar a:hover { border-color: var(--green); }
+  .toolbar button { margin-left: auto; border: 0; background: var(--dark); color: #fff; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 94px 20px 80px; }
   .slide {
+    position: relative;
     background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 28px 32px;
-    margin-bottom: 20px;
+    width: 100%;
+    min-height: 720px;
+    overflow: hidden;
+    padding: 52px 68px 64px 76px;
+    margin-bottom: 26px;
+    box-shadow: var(--shadow);
+  }
+  .slide::before {
+    content: ""; position: absolute; top: 50%; left: 0; width: 9px; height: 214px;
+    transform: translateY(-50%); border-radius: 0 6px 6px 0;
+    background: linear-gradient(180deg, var(--green), var(--lime));
+  }
+  .slide::after {
+    content: attr(data-page) "  ·  VARUS × BOLT FOOD";
+    position: absolute; right: 68px; bottom: 24px; left: 76px;
+    padding-top: 12px; border-top: 1px solid var(--line);
+    color: var(--faint); font-size: 11px; font-weight: 700; letter-spacing: .08em;
   }
   .eyebrow {
     display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
@@ -43,17 +82,17 @@
     text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
   }
   .pill { padding: 5px 11px; border-radius: 999px; background: var(--soft); color: var(--muted); }
-  .pill.on { background: var(--green); color: var(--white); }
+  .pill.on { background: linear-gradient(90deg, var(--green), var(--green-bright)); color: var(--white); }
   .pill.mint { background: var(--mint); color: var(--dark); }
-  h1 { font-size: 32px; line-height: 1.2; margin: 0 0 10px; letter-spacing: -.01em; }
-  h2 { font-size: 21px; margin: 0 0 6px; letter-spacing: -.01em; }
+  h1 { font-size: 38px; line-height: 1.15; margin: 0 0 10px; letter-spacing: -.025em; }
+  h2 { font-size: 27px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -.02em; }
   h3 { font-size: 14px; margin: 22px 0 8px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
   p { margin: 0 0 10px; }
   .lead { color: var(--muted); font-size: 15px; }
   .num { font-variant-numeric: tabular-nums; }
   .note { font-size: 12.5px; color: var(--muted); margin-top: 8px; }
   .callout {
-    border-radius: 12px; padding: 16px 18px; margin: 16px 0;
+    border-radius: 14px; padding: 18px 20px; margin: 18px 0;
     border: 1px solid var(--line); background: var(--soft);
   }
   .callout .ttl { font-weight: 700; margin-bottom: 6px; }
@@ -64,21 +103,21 @@
   .callout.warn { background: var(--amber-soft); border-color: #f0e2c4; }
   .callout.warn .ttl { color: var(--amber); }
   .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 18px 0 6px; }
-  .kpi { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
-  .kpi .v { font-size: 24px; font-weight: 700; letter-spacing: -.02em; }
+  .kpi { border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; background: var(--white); }
+  .kpi .v { font-size: 27px; font-weight: 800; letter-spacing: -.025em; }
   .kpi .l { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
   .kpi.good .v { color: var(--green); }
   .kpi.bad .v { color: var(--red); }
   .kpi.warn .v { color: var(--amber); }
   .cols2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .cols3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-  .box { border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .box { border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; background: var(--white); }
   .box .hd { font-weight: 700; font-size: 14px; margin-bottom: 10px; }
   .box ul { margin: 0; padding-left: 18px; }
   .box li { margin-bottom: 7px; font-size: 14px; }
   table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-top: 8px; }
   th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
-  th { font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 700; }
+  th { font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink); background: var(--soft); font-weight: 800; }
   td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
   tr.hl td { background: #f6fbf8; }
   tr.warnrow td { background: var(--red-soft); }
@@ -86,24 +125,55 @@
   .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); margin: 6px 0 2px; }
   .legend span { display: inline-flex; align-items: center; gap: 6px; }
   .dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .metric-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 26px 0; }
+  .flow-step { position: relative; padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: var(--soft); }
+  .flow-step:not(:last-child)::after { content: "→"; position: absolute; right: -12px; top: 34%; z-index: 2; color: var(--green); font-size: 22px; font-weight: 800; }
+  .metric-flow.composition .flow-step::after { display: none; }
+  .flow-step .big { font-size: 29px; font-weight: 800; line-height: 1.05; }
+  .flow-step .small { color: var(--muted); font-size: 12px; margin-top: 8px; }
+  .section-kicker { display: inline-flex; gap: 10px; align-items: center; margin-bottom: 12px; color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+  .section-kicker::before { content: ""; width: 28px; height: 4px; border-radius: 3px; background: linear-gradient(90deg, var(--green), var(--lime)); }
+  .status { display: inline-flex; padding: 4px 9px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+  .status.red { color: var(--red); background: var(--red-soft); }
+  .status.amber { color: var(--amber); background: var(--amber-soft); }
+  .status.green { color: var(--green); background: var(--mint); }
+  .bar-list { display: grid; gap: 12px; margin-top: 16px; }
+  .bar-row { display: grid; grid-template-columns: 220px 1fr 48px; gap: 12px; align-items: center; font-size: 13px; }
+  .bar-track { height: 10px; overflow: hidden; border-radius: 999px; background: var(--line); }
+  .bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--green), var(--lime)); }
   .hr { height: 1px; background: var(--line); margin: 24px 0; border: 0; }
   footer { color: var(--muted); font-size: 12.5px; padding: 0 12px; }
   @media (max-width: 860px) {
-    .kpis, .cols2, .cols3 { grid-template-columns: 1fr; }
-    .slide { padding: 22px 18px; }
+    .toolbar { overflow-x: auto; justify-content: flex-start; }
+    .toolbar button { margin-left: 0; }
+    .kpis, .cols2, .cols3, .metric-flow { grid-template-columns: 1fr; }
+    .flow-step:not(:last-child)::after { display: none; }
+    .bar-row { grid-template-columns: 1fr; gap: 4px; }
+    .slide { min-height: 0; padding: 34px 24px 58px 32px; }
+    .slide::after { left: 32px; right: 24px; }
     h1 { font-size: 26px; }
   }
   @media print {
     body { background: #fff; }
-    .slide { break-inside: avoid; page-break-inside: avoid; border-radius: 0; }
+    .toolbar { display: none; }
+    .wrap { padding: 0; }
+    .slide { width: 1280px; height: 720px; min-height: 720px; margin: 0; box-shadow: none; page-break-after: always; break-after: page; }
   }
 </style>
 </head>
 <body>
+<nav class="toolbar" aria-label="Навігація презентації">
+  <b>VARUS MBR</b>
+  <a href="#results">Результати</a>
+  <a href="#customers">Клієнти</a>
+  <a href="#operations">Операційка</a>
+  <a href="#actions">План</a>
+  <button type="button" onclick="window.print()">Export PDF</button>
+</nav>
 <div class="wrap">
 
   <!-- ============ 0. Cover / key message ============ -->
-  <section class="slide">
+  <section class="slide" id="results">
     <div class="eyebrow">
       <span class="pill on">MBR draft</span>
       <span class="pill mint">VARUS × Bolt Food UA</span>
@@ -177,10 +247,16 @@
   </section>
 
   <!-- ============ 3. Users ============ -->
-  <section class="slide">
+  <section class="slide" id="customers">
     <h2>3. Юзери: прийшло / активувалось / Bolt+</h2>
     <p class="lead">«Прийшло» = перший VARUS-ордер юзера в цьому місяці. «Активувалось» = мінімум одне
        delivered у місяці. «First на Bolt» = перший Delivery-ордер на платформі взагалі.</p>
+    <div class="metric-flow composition">
+      <div class="flow-step"><div class="big">6 526</div><div class="small">Активні юзери · Aug MTD</div></div>
+      <div class="flow-step"><div class="big">6 177</div><div class="small">З мінімум одним delivered</div></div>
+      <div class="flow-step"><div class="big">2 346</div><div class="small">Repeat users · ≥2 orders</div></div>
+      <div class="flow-step"><div class="big">806</div><div class="small">Bolt+ users</div></div>
+    </div>
     <h3>Активні, нові та активовані юзери</h3>
     <div class="chart" id="ch-users"></div>
     <table>
@@ -226,9 +302,43 @@
        більша за Bolt — це варто сказати прямо: ми не «викуповуємо» GMV.</p>
   </section>
 
-  <!-- ============ 5. Ops ============ -->
+  <!-- ============ 5. Campaign efficiency ============ -->
   <section class="slide">
-    <h2>5. Операційка: що повторюється і не закривається</h2>
+    <div class="section-kicker">Growth efficiency</div>
+    <h2>5. Кампанії: не лише spend, а результат</h2>
+    <p class="lead">Стандарт партнерських MBR — показувати orders, users, AOV та cost per order.
+      Нижче — атрибутовані кампаніям результати; це не causal incrementality.</p>
+    <div class="kpis">
+      <div class="kpi good"><div class="v">10.3k</div><div class="l">Campaign orders · Aug MTD</div></div>
+      <div class="kpi good"><div class="v">€179k</div><div class="l">Campaign-attributed GMV</div></div>
+      <div class="kpi"><div class="v">5.45k</div><div class="l">Users with campaign order</div></div>
+      <div class="kpi"><div class="v">€2.39</div><div class="l">Total spend / campaign order</div></div>
+    </div>
+    <h3>Ефективність кампаній · May – Aug 2026</h3>
+    <table>
+      <thead><tr>
+        <th>Місяць</th><th class="r">Campaign orders</th><th class="r">% усіх orders</th>
+        <th class="r">Attributed GMV</th><th class="r">Users</th><th class="r">AOV</th>
+        <th class="r">Total spend</th><th class="r">Spend / order</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Травень</td><td class="r">3 656</td><td class="r">54%</td><td class="r">€44.1k</td><td class="r">2 496</td><td class="r">€12.1</td><td class="r">€4.4k</td><td class="r">€1.20</td></tr>
+        <tr><td>Червень</td><td class="r">4 378</td><td class="r">55%</td><td class="r">€62.9k</td><td class="r">2 478</td><td class="r">€14.4</td><td class="r">€6.7k</td><td class="r">€1.53</td></tr>
+        <tr><td>Липень</td><td class="r">7 815</td><td class="r">76%</td><td class="r">€139.2k</td><td class="r">3 949</td><td class="r">€17.8</td><td class="r">€18.2k</td><td class="r">€2.33</td></tr>
+        <tr class="hl"><td>Серпень MTD</td><td class="r">10 333</td><td class="r">76%</td><td class="r">€179.3k</td><td class="r">5 452</td><td class="r">€17.4</td><td class="r">€24.7k</td><td class="r">€2.39</td></tr>
+      </tbody>
+    </table>
+    <div class="callout warn">
+      <div class="ttl">Що ще потрібно для чесного ROI</div>
+      Impressions → store visits → add to basket → checkout → delivered, плюс контрольна група.
+      Без цього ми показуємо attribution, але не можемо назвати €179k інкрементальним GMV банерів.
+    </div>
+  </section>
+
+  <!-- ============ 6. Ops ============ -->
+  <section class="slide" id="operations">
+    <div class="section-kicker">Customer experience</div>
+    <h2>6. Операційка: DT та якість vs інші гравці</h2>
     <div class="callout bad">
       <div class="ttl">DT 45 хв — реальний розрив vs інші гравці</div>
       1 Jul – 26 Aug: VARUS DT p50 = 34.6 хв, avg = 40.2 хв, 26.6% delivered довше 45 хв.
@@ -250,7 +360,17 @@
     </table>
     <div class="note">*У LOKO bad / late у тегу 3P Ent майже не розмічені — дивитись на NDR і DT.
       Source: dim_order_delivery · store_3p_ent UA · 1 Jul – 26 Aug 2026</div>
+  </section>
 
+  <section class="slide">
+    <div class="section-kicker">Root causes</div>
+    <h2>7. Проблеми, які повторюються і не закриваються</h2>
+    <div class="kpis">
+      <div class="kpi bad"><div class="v">404</div><div class="l">OOS cancellations · Jul–Aug</div></div>
+      <div class="kpi bad"><div class="v">314k грн</div><div class="l">Втрачений GMV через OOS</div></div>
+      <div class="kpi warn"><div class="v">251</div><div class="l">Working-hours failures</div></div>
+      <div class="kpi warn"><div class="v">39</div><div class="l">Integration-system failures</div></div>
+    </div>
     <div class="cols2" style="margin-top:18px">
       <div class="box">
         <div class="hd">Не закривається (recurring)</div>
@@ -277,9 +397,75 @@
     </div>
   </section>
 
-  <!-- ============ 6. CVP ============ -->
+  <!-- ============ 8. Store hotspots ============ -->
   <section class="slide">
-    <h2>6. CVP — візуальний імпакт</h2>
+    <div class="section-kicker">Venue-level accountability</div>
+    <h2>8. Де саме втрачаємо: store hotspots</h2>
+    <p class="lead">Серпень MTD. У стандартних MBR цей блок показують overall → city → venue,
+      щоб проблема мала конкретного owner на рівні магазину.</p>
+    <table>
+      <thead><tr>
+        <th>Магазин</th><th>Місто</th><th class="r">Orders</th><th class="r">Failed</th>
+        <th class="r">NDR</th><th class="r">Lost GMV</th><th class="r">DT p50</th><th>Статус</th>
+      </tr></thead>
+      <tbody>
+        <tr class="warnrow"><td>Андрія Малишка, 3</td><td>Київ</td><td class="r">577</td><td class="r">93</td><td class="r">16.1%</td><td class="r">114k грн</td><td class="r">59.6 хв</td><td><span class="status red">Critical</span></td></tr>
+        <tr class="warnrow"><td>пр. Науки, 8а</td><td>Дніпро</td><td class="r">383</td><td class="r">77</td><td class="r">20.1%</td><td class="r">75k грн</td><td class="r">78.5 хв</td><td><span class="status red">Critical</span></td></tr>
+        <tr class="warnrow"><td>Лесі Українки, 30</td><td>Київ</td><td class="r">66</td><td class="r">32</td><td class="r">48.5%</td><td class="r">37k грн</td><td class="r">48.4 хв</td><td><span class="status red">Critical</span></td></tr>
+        <tr><td>пр. Коцюбинського, 70</td><td>Вінниця</td><td class="r">1 209</td><td class="r">115</td><td class="r">9.5%</td><td class="r">99k грн</td><td class="r">50.6 хв</td><td><span class="status amber">Fix</span></td></tr>
+        <tr><td>Жилянська, 59</td><td>Київ</td><td class="r">490</td><td class="r">84</td><td class="r">17.1%</td><td class="r">74k грн</td><td class="r">40.7 хв</td><td><span class="status amber">Fix</span></td></tr>
+        <tr><td>бул. Європейський, 1Д</td><td>Дніпро</td><td class="r">306</td><td class="r">38</td><td class="r">12.4%</td><td class="r">31k грн</td><td class="r">44.9 хв</td><td><span class="status amber">Fix</span></td></tr>
+      </tbody>
+    </table>
+    <div class="callout bad">
+      <div class="ttl">Management ask</div>
+      Для трьох critical stores: owner, staffing plan, реальні години прийому та дата повторної
+      перевірки. Якщо NDR не нижче 8% за два тижні — тимчасово обмежити години або coverage.
+    </div>
+  </section>
+
+  <!-- ============ 9. Quality and voice ============ -->
+  <section class="slide">
+    <div class="section-kicker">Availability & voice of customer</div>
+    <h2>9. Каталог виглядає здоровим — picking experience ні</h2>
+    <div class="kpis">
+      <div class="kpi good"><div class="v">~99%</div><div class="l">Merchant availability</div></div>
+      <div class="kpi good"><div class="v">~98%</div><div class="l">SKU availability у каталозі</div></div>
+      <div class="kpi bad"><div class="v">~51%</div><div class="l">Order Defect Rate · липень</div></div>
+      <div class="kpi warn"><div class="v">47–50%</div><div class="l">Quantity defects saved by replacement</div></div>
+    </div>
+    <div class="cols2">
+      <div class="box">
+        <div class="hd">Повторювані теми CS · May–Aug</div>
+        <div class="bar-list">
+          <div class="bar-row"><span>Відмова збирати / staffing</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><b>28</b></div>
+          <div class="bar-row"><span>Видалення / заміна без узгодження</span><div class="bar-track"><div class="bar-fill" style="width:79%"></div></div><b>22</b></div>
+          <div class="bar-row"><span>Готовність / pickup code / видача</span><div class="bar-track"><div class="bar-fill" style="width:39%"></div></div><b>11</b></div>
+          <div class="bar-row"><span>Довге очікування кур'єра</span><div class="bar-track"><div class="bar-fill" style="width:21%"></div></div><b>6</b></div>
+          <div class="bar-row"><span>Години / вечірні відмови</span><div class="bar-track"><div class="bar-fill" style="width:18%"></div></div><b>5</b></div>
+          <div class="bar-row"><span>Ціни без попередження</span><div class="bar-track"><div class="bar-fill" style="width:14%"></div></div><b>4</b></div>
+        </div>
+      </div>
+      <div class="box">
+        <div class="hd">Інтерпретація для MBR</div>
+        <p>Каталог не є достатнім доказом availability. Основний дефект виникає під час picking:
+          товар «in stock» у фіді, але відсутній фізично або змінюється без контакту з клієнтом.</p>
+        <p><b>Що показувати щомісяця:</b> Top-15 SKU, photo coverage, OOS by category,
+          replacement acceptance і customer rating.</p>
+        <div class="callout warn" style="margin-bottom:0">
+          <div class="ttl">Data gap</div>
+          Поточний basket-item feed VARUS не містить назв SKU: Top-15 неможливо коректно
+          побудувати. Це окремий IT action для CZ / PIM.
+        </div>
+      </div>
+    </div>
+    <div class="note">Availability / ODR: Looker Stores CVP deep dive, Jul 2026. CS themes:
+      #ua-delivery-daily cases, May–Aug 2026.</div>
+  </section>
+
+  <!-- ============ 10. CVP ============ -->
+  <section class="slide">
+    <h2>10. CVP — візуальний імпакт</h2>
     <p>Те, що можна показати цифрами без Looker: більший кошик і більше людей, але гірший
        досвід доставки.</p>
     <div class="cols3">
@@ -313,9 +499,9 @@
     </div>
   </section>
 
-  <!-- ============ 7. Pricing ============ -->
+  <!-- ============ 11. Pricing ============ -->
   <section class="slide">
-    <h2>7. Ціноутворення: чому «маркап ×2 vs офлайн»</h2>
+    <h2>11. Ціноутворення: чому «маркап ×2 vs офлайн»</h2>
     <div class="callout good">
       <div class="ttl">Висновок з даних</div>
       Bolt не накручує другу націнку поверх фіду VARUS. Якщо клієнт бачить ×2 до полиці —
@@ -345,25 +531,25 @@
     </ol>
   </section>
 
-  <!-- ============ 8. Action plan ============ -->
-  <section class="slide">
-    <h2>8. Екшн-план на 6 місяців (Sep 2026 – Feb 2027)</h2>
+  <!-- ============ 12. Action plan ============ -->
+  <section class="slide" id="actions">
+    <div class="section-kicker">Joint business plan</div>
+    <h2>12. Екшн-план на 6 місяців (Sep 2026 – Feb 2027)</h2>
     <table>
-      <thead><tr><th>Коли</th><th>Що</th><th>Навіщо</th><th>Owner (драфт)</th></tr></thead>
+      <thead><tr><th>Deadline</th><th>Action / success metric</th><th>Owner (драфт)</th><th>Статус</th></tr></thead>
       <tbody>
-        <tr><td>Q3–Q4</td><td>DT p50 ≤ 30 хв, частка &gt; 45 хв ≤ 12%</td>
-            <td>Закрити головний розрив vs піри до лончу інших grocery</td><td>VARUS ops + Bolt courier / zone</td></tr>
-        <tr><td>Q3</td><td>Staffing, години, вечірня зборка — SLA по сторах</td>
-            <td>Прибрати recurring NDR 19:00–22:00</td><td>VARUS store ops</td></tr>
-        <tr><td>Q3–Q4</td><td>CZ backlog: стоки, ціни, POS 500, pickup code</td>
-            <td>Не тягнути той самий IT-борг у наступний лонч</td><td>VARUS IT / CZ + Bolt integrations</td></tr>
-        <tr><td>Q4</td><td>Офлайн-паритет цін: аудит топ-SKU, фікс фіду</td>
-            <td>Прибрати сприйняття ×2</td><td>VARUS commercial + PIM</td></tr>
-        <tr><td>H2 – Q1</td><td>Банери та in-app: Back to school, Oktoberfest, back to routine</td>
-            <td>Зафіксувати share of voice, поки VARUS єдиний великий grocery у FD</td><td>Bolt grocery + VARUS marketing</td></tr>
-        <tr class="hl"><td>Q1 2027</td><td>Лонч інших гравців у FD</td>
-            <td>Імпакт «єдиного nationwide grocery» закінчиться — DT і availability мають бути гігієною, а не USP</td>
-            <td>Bolt grocery</td></tr>
+        <tr><td>30 Sep</td><td>DT p50 ≤ 30 хв; частка &gt;45 хв ≤ 12%</td>
+            <td>VARUS ops + Bolt courier / zone</td><td><span class="status red">At risk</span></td></tr>
+        <tr><td>15 Sep</td><td>Staffing і реальні години зборки для 6 hotspot stores; NDR ≤ 8%</td>
+            <td>VARUS store ops</td><td><span class="status red">Open</span></td></tr>
+        <tr><td>31 Oct</td><td>CZ: stock/price sync, POS 500, pickup code; 0 integration failures</td>
+            <td>VARUS IT / CZ + Bolt integrations</td><td><span class="status amber">In progress</span></td></tr>
+        <tr><td>30 Sep</td><td>Аудит 30 SKU: shelf vs Bolt vs Glovo; погоджений feed fix</td>
+            <td>VARUS commercial + PIM</td><td><span class="status red">Open</span></td></tr>
+        <tr><td>Sep–Dec</td><td>In-app пакет + вимірювання impressions → orders → incremental GMV</td>
+            <td>Bolt grocery + VARUS marketing</td><td><span class="status amber">Planned</span></td></tr>
+        <tr class="hl"><td>Q1 2027</td><td>Утримати default grocery choice після лончу інших партнерів</td>
+            <td>Bolt grocery + VARUS</td><td><span class="status amber">Prepare now</span></td></tr>
       </tbody>
     </table>
     <div class="callout warn">
@@ -374,9 +560,9 @@
     </div>
   </section>
 
-  <!-- ============ 9. Playbook ============ -->
+  <!-- ============ 13. Playbook ============ -->
   <section class="slide">
-    <h2>9. Playbook: наступні кроки при лончі інших гравців</h2>
+    <h2>13. Playbook: наступні кроки при лончі інших гравців</h2>
     <table>
       <thead><tr><th>Урок VARUS</th><th>Що зробити на день 0 з наступним партнером</th></tr></thead>
       <tbody>
@@ -430,9 +616,14 @@
 
 <script>
 const C = {
-  green: '#2f8b57', mint: '#8fd3b3', grey: '#a9b7b0', greyDark: '#6f7f78',
-  red: '#b8452a', amber: '#c99a3c', blue: '#3f7f9c', line: '#dce4df', muted: '#5d6b64'
+  green: '#0f9d5a', mint: '#8fd3b3', grey: '#a9b7b0', greyDark: '#6c7772',
+  red: '#e94b3b', amber: '#c99a3c', blue: '#2a8bee', line: '#e6ebe7', muted: '#6c7772'
 };
+
+const slides = [...document.querySelectorAll('.slide')];
+slides.forEach((slide, index) => {
+  slide.dataset.page = `${index + 1} / ${slides.length}`;
+});
 
 function fmt(v) {
   if (Math.abs(v) >= 1000) return v.toLocaleString('uk-UA');

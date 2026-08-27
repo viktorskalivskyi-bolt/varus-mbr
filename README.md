@@ -1,8 +1,9 @@
 # VARUS × Bolt — MBR draft (Aug 2026)
 
 Перший драфт MBR-презентації по VARUS: продажі vs ramp, результати лончу, юзери та Bolt+,
-спенди кампаній, операційні метрики (DT vs інші гравці), CVP, перевірка ціноутворення,
-екшн-план на 6 місяців і playbook на лонч наступних grocery-партнерів.
+спенди й ефективність кампаній, операційні метрики (DT vs інші гравці), store hotspots,
+availability / ODR / customer feedback, CVP, перевірка ціноутворення, action tracker
+на 6 місяців і playbook на лонч наступних grocery-партнерів.
 
 - Онлайн-версія: https://viktorskalivskyi-bolt.github.io/varus-mbr/
 - Дані: `main.ng_delivery.dim_order_delivery`, `dim_basket_item_delivery`,
@@ -20,4 +21,5 @@ Internal draft. Не відправляти партнеру, поки не пі
 
 ## Файли
 
-- `index.html` — самодостатній дек (inline SVG-графіки, без зовнішніх залежностей).
+- `index.html` — самодостатній 15-слайдовий дек у стилі Corezoid-документа:
+  Avenir Next, 16:9 layout, inline SVG-графіки, без зовнішніх залежностей.
