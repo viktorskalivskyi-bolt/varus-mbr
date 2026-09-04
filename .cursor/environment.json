@@ -1,0 +1,14 @@
+{
+  "name": "VARUS MBR deck",
+  "chromeExecutablePath": "/usr/bin/google-chrome-stable",
+  "ports": [
+    { "name": "deck", "port": 8080 }
+  ],
+  "terminals": [
+    {
+      "name": "deck-server",
+      "command": "python3 -m http.server 8080 --bind 0.0.0.0",
+      "description": "Serves the self-contained MBR deck (index.html) at http://localhost:8080/. Open it in a browser to preview slides and JS-rendered charts."
+    }
+  ]
+}
