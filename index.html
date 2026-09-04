@@ -367,44 +367,48 @@
   <!-- ============ 5. Operational losses ============ -->
   <section class="slide">
     <div class="section-kicker">Business impact</div>
-    <h2>5. NDR вище ринку — це ≈1 141 замовлення і ≈₴0.91 млн GMV, який не доїхав</h2>
-    <div class="kpis">
-      <div class="kpi warn"><div class="v">₴0.91 млн</div><div class="l">Розрив vs NDR пірів 3.2%</div></div>
-      <div class="kpi warn"><div class="v">≈1 141</div><div class="l">Замовлень понад ринковий рівень</div></div>
-      <div class="kpi"><div class="v">₴798</div><div class="l">Середній чек цих замовлень</div></div>
-      <div class="kpi warn"><div class="v">6.6% vs 3.2%</div><div class="l">NDR VARUS vs інші 3P</div></div>
+    <h2>5. Через те, що немає кому збирати, зриваються замовлення</h2>
+    <p class="lead">Основний драйвер скасувань — не каталог і не кур'єр, а зборка в магазині.
+      Розрив vs NDR пірів 3.2% за 1 Jun – 26 Aug.</p>
+
+    <div class="hero">
+      <div class="tile warn">
+        <div class="v num">≈1 141</div>
+        <div class="l">Втрачених замовлень</div>
+        <div class="s">понад ринковий рівень NDR</div>
+      </div>
+      <div class="tile bad">
+        <div class="v num">₴0.91 млн</div>
+        <div class="l">Втрачений GMV</div>
+        <div class="s">6.6% NDR VARUS vs 3.2% інші 3P</div>
+      </div>
+      <div class="tile">
+        <div class="v num">₴798</div>
+        <div class="l">Середній чек</div>
+        <div class="s">цих недоїхавших замовлень</div>
+      </div>
     </div>
 
-    <div class="cols2" style="margin-top:18px">
+    <div class="cols2">
       <div class="box">
-        <div class="hd" style="color:var(--red)">Повторюється в магазині</div>
+        <div class="hd">Основні причини</div>
         <ul>
           <li><b>OOS під час зборки:</b> 404 фейли, ₴314k. Каталог зелений, полиця порожня.</li>
-          <li><b>Години та відмови збирати:</b> 251 фейл, ₴242k. Тягнеться з травня, пік увечері.</li>
+          <li><b>Години та відмови збирати:</b> 251 фейл, ₴242k. Тягнеться з травня, пік увечері — немає кого ставити на picking.</li>
           <li><b>NDR не стабілізувався:</b> 8.4% → 5.8% → 4.7% → знову 8.1% у серпні.</li>
           <li><b>ODR ~50%</b> при 98% SKU availability у фіді — дефект на picking, не в меню.</li>
         </ul>
       </div>
       <div class="box">
-        <div class="hd">Стик систем — спільний backlog</div>
+        <div class="hd">Що означають показники</div>
         <ul>
-          <li><b>POS / Corezoid 500</b> на модифікаціях: губляться pickup-код і чек.</li>
-          <li><b>39 фейлів</b> з причиною integration system.</li>
-          <li><b>Фіди стоків і цін:</b> price_mismatch при наявному товарі.</li>
-          <li><b>Заміни</b> покривають лише близько половини OOS у «Збирайко».</li>
+          <li><b>NDR</b> — Non-Delivery Rate: частка замовлень, які не доїхали до клієнта (скасовані / failed). У VARUS 6.6% проти 3.2% в інших 3P.</li>
+          <li><b>ODR</b> — Order Defect Rate: частка замовлень із дефектом комплектації (немає SKU, заміна, помилка picking). ~50% при зеленому фіді означає, що проблема не в меню.</li>
         </ul>
+        <p class="note" style="margin-top:12px;margin-bottom:0">Метод втрат: delivered × (NDR VARUS − NDR пірів) × AOV місяця.
+          Це розрив vs benchmark, не write-off у фінансах.</p>
       </div>
     </div>
-
-    <div class="callout bad">
-      <div class="ttl">Три точки, де варто почати вже цього тижня</div>
-      Андрія Малишка 3 (NDR 16.1%, DT 59.6 хв), пр. Науки 8а (20.1%, 78.5 хв),
-      Лесі Українки 30 (48.5%). Ask: owner, staffing, реальні години зборки.
-      Через два тижні дивимось NDR; якщо не нижче 8% — разом вирішуємо про години або coverage.
-    </div>
-
-    <p class="note">Метод: delivered × (NDR VARUS − NDR пірів) × AOV місяця, 1 Jun – 26 Aug.
-      Це розрив vs benchmark, не претензія «ви втратили мільйон» і не write-off у фінансах.</p>
   </section>
 
   <!-- ============ 6. Pricing ============ -->
