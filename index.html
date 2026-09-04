@@ -339,7 +339,7 @@
     <h2>4. Кожне 4-те замовлення довше 45 хв — у пірів кожне 14-те</h2>
     <div class="callout warn">
       <div class="ttl">Розрив є. Причину розкладемо разом, не списуємо «на кур'єра» чи «на магазин»</div>
-      Той самий кур'єрський пул: інші 3P stores — 23.5 хв, VARUS — 34.6 хв. Формат гіпермаркету
+      Той самий кур'єрський пул: Партнер 1 — 23.5 хв, VARUS — 34.6 хв. Формат гіпермаркету
       пояснює частину різниці, але не 26.6% vs 7% за межею 45 хв. Наступний крок Bolt:
       розкласти DT на прийняття / зборку / очікування кур'єра — і тоді видно, де важіль.
     </div>
@@ -353,9 +353,9 @@
         <th class="r">DT p50, хв</th><th class="r">% &gt; 45 хв</th>
       </tr></thead>
       <tbody>
-        <tr><td>Інші 3P stores</td><td class="r">39 734</td><td class="r">3.2%</td><td class="r">23.5</td><td class="r">7.0%</td></tr>
-        <tr><td>LOKO</td><td class="r">9 694</td><td class="r">1.3%</td><td class="r">26.8</td><td class="r">16.1%</td></tr>
-        <tr><td>Rukavychka</td><td class="r">1 469</td><td class="r">4.8%</td><td class="r">26.7</td><td class="r">11.8%</td></tr>
+        <tr><td>Партнер 1</td><td class="r">39 734</td><td class="r">3.2%</td><td class="r">23.5</td><td class="r">7.0%</td></tr>
+        <tr><td>Партнер 2</td><td class="r">9 694</td><td class="r">1.3%</td><td class="r">26.8</td><td class="r">16.1%</td></tr>
+        <tr><td>Партнер 3</td><td class="r">1 469</td><td class="r">4.8%</td><td class="r">26.7</td><td class="r">11.8%</td></tr>
         <tr class="warnrow"><td><b>VARUS</b></td><td class="r">23 866</td><td class="r">6.6%</td><td class="r">34.6</td><td class="r">26.6%</td></tr>
       </tbody>
     </table>
@@ -515,7 +515,7 @@
       <div class="box">
         <div class="hd">Очікувані заперечення та відповіді</div>
         <ul>
-          <li><b>«DT — це ваші кур’єри»:</b> у інших 3P stores із тим самим кур’єрським пулом
+          <li><b>«DT — це ваші кур’єри»:</b> у Партнера 1 із тим самим кур’єрським пулом
               p50 23.5 хв. Розрив утворюється до передачі кур’єру — на зборці.</li>
           <li><b>«Банери ж були безкоштовні»:</b> вони були частиною лонч-інвестиції Bolt
               (4.2% GMV у серпні). Лонч закінчився, інвентар обмежений, партнерів стає більше.</li>
@@ -553,7 +553,7 @@
         <ul>
           <li>Скріни 20 SKU: полиця vs Bolt — для слайду про ×2.</li>
           <li>Список CZ-тікетів зі статусами та датами.</li>
-          <li>Дата завершення FD-імпакту та лонч наступного гравця (ATB чи інші).</li>
+          <li>Дата завершення FD-імпакту та лонч наступного гравця.</li>
         </ul>
       </div>
     </div>
@@ -719,7 +719,7 @@ lineChart(document.getElementById('ch-users'), {
 });
 
 barChart(document.getElementById('ch-dt'), {
-  categories: ['Інші 3P stores', 'LOKO', 'Rukavychka', 'VARUS'],
+  categories: ['Партнер 1', 'Партнер 2', 'Партнер 3', 'VARUS'],
   series: [{ name: 'DT p50, хв', color: C.amber, data: [23.5, 26.8, 26.7, 34.6] }],
   refLine: { value: 45, label: '45 хв' },
   showValues: true, height: 250
