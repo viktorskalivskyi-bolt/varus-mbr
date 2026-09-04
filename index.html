@@ -103,8 +103,22 @@
   .callout.warn { background: var(--amber-soft); border-color: #f0e2c4; }
   .callout.warn .ttl { color: var(--amber); }
   .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 18px 0 6px; }
-  .kpis.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .kpis.five .kpi .v { font-size: 24px; }
+  .hero { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; margin: 26px 0 18px; }
+  .hero .tile {
+    grid-column: span 2; display: flex; flex-direction: column; justify-content: center;
+    min-height: 196px; padding: 24px 26px; border: 1px solid var(--line); border-radius: 18px;
+    background: var(--white);
+  }
+  .hero .tile.wide { grid-column: span 3; }
+  .hero .tile .v { font-size: 46px; font-weight: 800; line-height: 1.02; letter-spacing: -.03em; }
+  .hero .tile .l { margin-top: 10px; font-size: 15px; font-weight: 700; }
+  .hero .tile .s { margin-top: 6px; font-size: 12.5px; color: var(--muted); }
+  .hero .tile.good { background: var(--mint); border-color: #bfe3cf; }
+  .hero .tile.good .v { color: var(--green); }
+  .hero .tile.warn { background: var(--amber-soft); border-color: #f0e2c4; }
+  .hero .tile.warn .v { color: var(--amber); }
+  .hero .tile.bad { background: var(--red-soft); border-color: #f2d5c9; }
+  .hero .tile.bad .v { color: var(--red); }
   .kpi { border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; background: var(--white); }
   .kpi .v { font-size: 27px; font-weight: 800; letter-spacing: -.025em; }
   .kpi .l { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
@@ -148,7 +162,9 @@
   @media (max-width: 860px) {
     .toolbar { overflow-x: auto; justify-content: flex-start; }
     .toolbar button { margin-left: 0; }
-    .kpis, .cols2, .cols3, .metric-flow { grid-template-columns: 1fr; }
+    .kpis, .cols2, .cols3, .metric-flow, .hero { grid-template-columns: 1fr; }
+    .hero .tile, .hero .tile.wide { grid-column: span 1; min-height: 0; }
+    .hero .tile .v { font-size: 34px; }
     .flow-step:not(:last-child)::after { display: none; }
     .bar-row { grid-template-columns: 1fr; gap: 4px; }
     .slide { min-height: 0; padding: 34px 24px 58px 32px; }
@@ -185,17 +201,36 @@
     <h1>План виконали разом. Далі вирішує досвід клієнта.</h1>
     <p class="lead">Executive summary · травень–серпень 2026</p>
 
-    <div class="kpis five">
-      <div class="kpi good"><div class="v">27.2 млн грн</div><div class="l">Продажі GMV · травень–серпень</div></div>
-      <div class="kpi good"><div class="v">6 526</div><div class="l">Клієнтів · активні, серпень</div></div>
-      <div class="kpi good"><div class="v">827 грн</div><div class="l">Середній чек · серпень</div></div>
-      <div class="kpi warn"><div class="v">≈2 800</div><div class="l">Bad orders · NDR 6.8%</div></div>
-      <div class="kpi bad"><div class="v">₴0.91 млн</div><div class="l">Втрачений GMV vs NDR пірів</div></div>
+    <div class="hero">
+      <div class="tile good">
+        <div class="v num">27.2 млн грн</div>
+        <div class="l">Загальний обʼєм продажів</div>
+        <div class="s">травень–серпень · 105% рампу</div>
+      </div>
+      <div class="tile good">
+        <div class="v num">6 526</div>
+        <div class="l">Кількість клієнтів</div>
+        <div class="s">активні у серпні · +34% MoM</div>
+      </div>
+      <div class="tile good">
+        <div class="v num">827 грн</div>
+        <div class="l">Середній чек</div>
+        <div class="s">серпень · 607 грн у травні</div>
+      </div>
+      <div class="tile warn wide">
+        <div class="v num">≈2 800</div>
+        <div class="l">Bad orders — недоставлені замовлення</div>
+        <div class="s">травень–серпень · NDR 6.8% проти 3.2% в інших мережах</div>
+      </div>
+      <div class="tile bad wide">
+        <div class="v num">₴0.91 млн</div>
+        <div class="l">Втрачений GMV через NDR вище ринку</div>
+        <div class="s">≈1 141 замовлення × ₴798 · червень–26 серпня</div>
+      </div>
     </div>
 
-    <p class="note">Продажі та бед-ордери — травень–серпень (38.6k delivered). Чек і клієнти — серпень.
-      ₴0.91 млн = GMV замовлень понад ринковий NDR 3.2% за червень–26 серпня (~1 141 ордери × ₴798),
-      не бухгалтерське списання. Деталі — на слайдах 1 і 5.</p>
+    <p class="note">₴0.91 млн — це GMV замовлень понад ринковий рівень NDR, а не бухгалтерське
+      списання. Деталі: продажі — слайд 1, операційка — слайди 4–5.</p>
   </section>
 
   <!-- ============ 1. Sales vs ramp + launch ============ -->
