@@ -297,40 +297,40 @@
   <!-- ============ 3. Investment + in-app visibility ============ -->
   <section class="slide" id="banners">
     <div class="section-kicker">Joint investment</div>
-    <h2>3. Разом вклали €54k; 73% профінансував VARUS</h2>
-    <p class="lead">Bolt додав видимість у додатку як частину лончу. 76% — частка замовлень
-      із позначкою кампанії, не доведений інкремент.</p>
+    <h2>3. Хто скільки вклав у промо: €54k разом</h2>
+    <p class="lead">Травень–серпень 2026 · знижки, кампанії та лонч-підтримка</p>
 
-    <div class="kpis">
-      <div class="kpi"><div class="v">€39.5k</div><div class="l">Інвестиція VARUS · 73%</div></div>
-      <div class="kpi"><div class="v">€14.5k</div><div class="l">Інвестиція Bolt · 27%</div></div>
-      <div class="kpi"><div class="v">76%</div><div class="l">Ордерів із campaign-позначкою</div></div>
-      <div class="kpi"><div class="v">€179k</div><div class="l">GMV цих ордерів · серпень</div></div>
-    </div>
-
-    <div class="cols2" style="margin-top:18px">
-      <div class="box">
-        <div class="hd">Campaign spend, тис. грн</div>
-        <div class="chart" id="ch-spend"></div>
+    <div class="hero">
+      <div class="tile wide">
+        <div class="v num">€39.5k</div>
+        <div class="l">Вклав VARUS</div>
+        <div class="s">₴2.03 млн · 73% усіх інвестицій у промо</div>
       </div>
-      <div class="box">
-        <div class="hd">Що входило в лонч-підтримку Bolt</div>
-        <ul>
-          <li>Банери на головній та в grocery у пікові тижні.</li>
-          <li>Discovery Feed €6.2k + CRM €7.8k лише в серпні.</li>
-          <li>Ордери з позначкою кампанії: 3.7k → 10.3k.</li>
-          <li>Користувачі з таким замовленням: 2.5k → 5.5k.</li>
-        </ul>
+      <div class="tile wide good">
+        <div class="v num">€14.5k</div>
+        <div class="l">Вклав Bolt</div>
+        <div class="s">₴747k · 27% · переважно видимість у додатку та CRM</div>
+      </div>
+      <div class="tile">
+        <div class="v num">€54k</div>
+        <div class="l">Разом</div>
+        <div class="s">₴2.78 млн за чотири місяці</div>
+      </div>
+      <div class="tile">
+        <div class="v num">2.7 : 1</div>
+        <div class="l">Співвідношення VARUS до Bolt</div>
+        <div class="s">партнер інвестує майже втричі більше</div>
+      </div>
+      <div class="tile">
+        <div class="v num">4.2%</div>
+        <div class="l">Spend Bolt до GMV · серпень</div>
+        <div class="s">2.9% у травні — це лонч-інвестиція, не постійна опція</div>
       </div>
     </div>
 
-    <div class="callout warn">
-      <div class="ttl">Наступний крок, не рішення «сьогодні заплатіть»</div>
-      Лонч-вікно закривається, інвентар на головній обмежений. Bolt принесе rate card:
-      формати, мінімальний бюджет, KPI і як мірятимемо інкремент (контрольна група).
-      Частину пакету можна закрити co-op бюджетами постачальників — як в офлайні.
-      Без ставок бюджет Q4 на цій зустрічі не фіксуємо.
-    </div>
+    <p class="note">Комерційний результат створений спільно і не «викуплений» бюджетом Bolt.
+      Лонч-вікно закривається: Bolt принесе rate card на Q4 з форматами, KPI і методом
+      вимірювання інкременту. Бюджет на цій зустрічі не фіксуємо.</p>
   </section>
 
   <!-- ============ 4. Delivery time ============ -->
@@ -712,15 +712,6 @@ lineChart(document.getElementById('ch-users'), {
     { name: 'З delivered', color: C.green, data: [3679, 3571, 4704, 6177] }
   ],
   height: 250
-});
-
-barChart(document.getElementById('ch-spend'), {
-  categories: ['Травень', 'Червень', 'Липень', 'Серпень'],
-  series: [
-    { name: 'Bolt', color: C.green, data: [107, 1, 203, 436] },
-    { name: 'VARUS / provider', color: C.mint, data: [119, 343, 727, 842] }
-  ],
-  stacked: true, height: 250
 });
 
 barChart(document.getElementById('ch-dt'), {
