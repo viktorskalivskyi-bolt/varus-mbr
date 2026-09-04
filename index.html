@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VARUS × Bolt — MBR draft (Aug 2026)</title>
+<title>VARUS × Bolt — Monthly Business Review · Aug 2026</title>
 <style>
   :root {
     --ink: #13211b;
@@ -163,7 +163,7 @@
 </head>
 <body>
 <nav class="toolbar" aria-label="Навігація презентації">
-  <b>VARUS MBR</b>
+  <b>VARUS × Bolt · Aug 2026</b>
   <a href="#results">Результати</a>
   <a href="#customers">Клієнти</a>
   <a href="#operations">Операційка</a>
@@ -173,68 +173,56 @@
 </nav>
 <div class="wrap">
 
-  <!-- ============ 0. Cover / key message ============ -->
+  <!-- ============ 0. Executive summary ============ -->
   <section class="slide" id="results">
     <div class="eyebrow">
-      <span class="pill on">MBR draft</span>
+      <span class="pill on">Monthly Business Review</span>
       <span class="pill mint">VARUS × Bolt Food UA</span>
       <span class="pill">Дані до 26 Aug 2026</span>
-      <span class="pill">Internal draft</span>
     </div>
-    <h1>VARUS MBR — перший драфт</h1>
-    <p class="lead">
-      Джерела: <span class="num">main.ng_delivery.dim_order_delivery</span>,
-      <span class="num">dim_basket_item_delivery</span>,
-      <span class="num">dim_food_getplace_item_price_comparison</span>.
-      Ramp-план 3 → 5 → 8 → 10 млн грн — робоча гіпотеза з контрактних переговорів,
-      підтвердити перед відправкою партнеру.
-    </p>
+    <h1>Продажі випередили рамп. Операційна якість — ні.</h1>
+    <p class="lead">Executive summary · травень–серпень 2026</p>
 
     <div class="callout good">
-      <div class="ttl">Головний меседж на 1 слайд</div>
-      Національний лонч з травня перевиконує рамп: серпень уже 10.3 млн грн GMV за 26 днів
-      при плані 10. Операційна якість не підтягнулась за продажами — DT і NDR гірші за пірів,
-      а recurring-проблеми (OOS, години зборки, CZ) не закриті. Наступні 6 місяців — вікно,
-      поки VARUS єдиний великий grocery у Food Delivery. Після лончу інших гравців цей імпакт закінчиться,
-      а видимість у додатку стане платним інвентарем.
+      <div class="ttl">Рішення для керівництва</div>
+      Захистити комерційний результат через операційний turnaround: DT ≤30 хв, NDR ≤3.5%,
+      стабільний CZ-флоу та реальна наявність товару. Це потрібно зробити до появи інших
+      національних grocery-партнерів на Bolt Food.
     </div>
 
     <div class="kpis">
       <div class="kpi good"><div class="v">10.3 млн грн</div><div class="l">GMV серпень · 26 днів</div></div>
       <div class="kpi good"><div class="v">103%</div><div class="l">Серпень vs план 10 млн</div></div>
-      <div class="kpi"><div class="v">6.5k</div><div class="l">MAU серпень</div></div>
-      <div class="kpi warn"><div class="v">35.8 хв</div><div class="l">DT p50 серпень</div></div>
+      <div class="kpi bad"><div class="v">₴0.91 млн</div><div class="l">Оціночний avoidable GMV loss · літо</div></div>
+      <div class="kpi warn"><div class="v">26.6%</div><div class="l">Delivered orders &gt;45 хв</div></div>
     </div>
+    <p class="note">Ramp 3 → 5 → 8 → 10 млн грн — робочий план; підтвердити за контрактом.
+      Avoidable loss = NDR понад benchmark інших 3P stores (3.2%).</p>
   </section>
 
   <!-- ============ 1. Scorecard ============ -->
   <section class="slide">
     <div class="section-kicker">Partnership scorecard</div>
-    <h2>1. Де VARUS сильний і де ми втрачаємо разом</h2>
-    <p class="lead">Комерційно партнерство виконує план. Розрив — у виконанні на місці:
-      швидкість, надійність і наявність товару під час зборки.</p>
+    <h2>1. Партнерство росте; customer experience стримує потенціал</h2>
+    <p class="lead">Зелена зона — попит і кошик. Червона зона — швидкість, надійність та picking.</p>
 
     <div class="cols2">
       <div class="box">
         <div class="hd" style="color:var(--green)">Сильні сторони</div>
         <ul>
-          <li><b>Комерційна динаміка:</b> 10.3 млн грн GMV за 26 днів серпня — 103% плану.</li>
-          <li><b>Кошик:</b> AOV 607 → 827 грн (+36%) за чотири місяці.</li>
-          <li><b>Попит:</b> MAU 4.0k → 6.5k, +34% лише за липень → серпень.</li>
-          <li><b>Швидкість розгортання:</b> 11 міст і ~55 активних сторів.</li>
-          <li><b>Співінвестування:</b> партнер вклав ~€39.5k промо проти ~€14.5k Bolt.</li>
-          <li><b>Ціновий паритет онлайн:</b> Bolt = Glovo, price index 1.00.</li>
+          <li><b>103% рампу:</b> 10.3 млн грн GMV за 26 днів серпня.</li>
+          <li><b>+36% до кошика:</b> AOV 607 → 827 грн.</li>
+          <li><b>+34% MAU MoM:</b> 4.9k → 6.5k.</li>
+          <li><b>Масштаб:</b> 11 міст, ~55 активних магазинів.</li>
         </ul>
       </div>
       <div class="box">
         <div class="hd" style="color:var(--red)">Слабкі сторони — операційка</div>
         <ul>
-          <li><b>Швидкість:</b> DT p50 34.6 хв проти 23.5 хв у інших 3P stores.</li>
-          <li><b>Обіцянка клієнту:</b> 26.6% замовлень довше 45 хв (у пірів 7%).</li>
-          <li><b>Надійність:</b> NDR 6.6% — удвічі вище за піри; у серпні регрес до 8.1%.</li>
-          <li><b>Наявність під час зборки:</b> ODR близько 50% при SKU availability ~98% у каталозі.</li>
-          <li><b>Стабільність інтеграції:</b> 39 фейлів через integration system, POS 500.</li>
-          <li><b>Сприйняття ціни:</b> онлайн-ціна вище полиці — це питання фіду, не Bolt.</li>
+          <li><b>+11 хв до DT:</b> 34.6 хв vs 23.5 хв у інших 3P stores.</li>
+          <li><b>Кожне 4-те замовлення</b> доставляється довше 45 хв.</li>
+          <li><b>2× NDR:</b> 6.6% vs 3.2% у пірів.</li>
+          <li><b>~50% ODR</b> при 98% SKU availability у каталозі.</li>
         </ul>
       </div>
     </div>
@@ -255,15 +243,14 @@
         <tr><td>Стабільність інтеграції</td><td class="r">39 фейлів</td><td class="r">0</td><td><span class="status amber">Fix in progress</span></td></tr>
       </tbody>
     </table>
-    <p class="note">Меседж партнеру: попит ми вже створили разом, і він зростає швидше за план.
-      Наступні шість місяців вирішує не маркетинг, а операційна дисципліна на рівні магазину.</p>
+    <p class="note">Висновок: новий маркетинговий spend не компенсує втрати, поки NDR і DT
+      залишаються удвічі гіршими за benchmark.</p>
   </section>
 
   <!-- ============ 2. Launch ============ -->
   <section class="slide">
-    <h2>2. Лонч: що реально сталось</h2>
-    <p>Пілот з 19 Sep 2025 був мікроскопічний — приблизно 150–250 замовлень на місяць.
-       Національний лонч — травень 2026: стрибок з 0.17 до 3.75 млн грн за місяць.</p>
+    <h2>2. Національний лонч масштабував GMV у 22× за один місяць</h2>
+    <p class="lead">Пілот довів інтеграцію; rollout у травні довів попит.</p>
     <div class="cols3">
       <div class="kpi"><div class="v">11 міст</div><div class="l">Покриття</div></div>
       <div class="kpi"><div class="v">~55 live</div><div class="l">Сторів із замовленнями в серпні</div></div>
@@ -271,17 +258,16 @@
     </div>
     <h3>Delivered GMV, млн грн</h3>
     <div class="chart" id="ch-gmv"></div>
+    <div class="callout good"><div class="ttl">Що спрацювало</div>
+      Широке покриття + launch visibility + item-level discounts перетворили пілотний
+      GMV 0.17 млн грн у 3.75 млн грн уже в перший місяць rollout.</div>
     <div class="note">Source: dim_order_delivery · delivered GMV local · Sep 2025 – 26 Aug 2026</div>
   </section>
 
   <!-- ============ 2. Sales vs ramp ============ -->
   <section class="slide">
-    <h2>3. Продажі vs рамп</h2>
-    <div class="callout warn">
-      <div class="ttl">Підтвердити план перед слайдом</div>
-      У драфті рамп = 3 / 5 / 8 / 10 млн грн (травень–серпень). Якщо в контракті інші суми
-      або план у EUR — відсотки перевиконання зміняться.
-    </div>
+    <h2>3. GMV досяг плану в кожному місяці rollout</h2>
+    <p class="lead">Факт за травень–серпень: 27.2 млн грн, або 105% сукупного рампу.</p>
     <h3>Delivered GMV vs ramp plan, млн грн</h3>
     <div class="chart" id="ch-ramp"></div>
     <table>
@@ -296,13 +282,13 @@
         <tr class="hl"><td>Серпень (26 днів)</td><td class="r">10.0</td><td class="r">10.28</td><td class="r">103%</td><td class="r">13 525</td><td class="r">827</td><td class="r">199</td></tr>
       </tbody>
     </table>
-    <p class="note">Run-rate серпня — приблизно 12.2 млн грн на повний місяць, якщо темп утримається.
-       AOV зріс з 607 до 827 грн (+36%): це кошик, а не лише трафік.</p>
+    <p class="note">Липень округлено до 99% плану; сукупно факт вище рампу на 1.2 млн грн.
+      Run-rate серпня ≈12.2 млн грн. План потребує фінального контрактного підтвердження.</p>
   </section>
 
   <!-- ============ 3. Users ============ -->
   <section class="slide" id="customers">
-    <h2>4. Юзери: прийшло / активувалось / Bolt+</h2>
+    <h2>4. 6.5k MAU: ріст дають нові grocery-клієнти, Bolt+ — лояльне ядро</h2>
     <p class="lead">«Прийшло» = перший VARUS-ордер юзера в цьому місяці. «Активувалось» = мінімум одне
        delivered у місяці. «First на Bolt» = перший Delivery-ордер на платформі взагалі.</p>
     <div class="metric-flow composition">
@@ -330,13 +316,13 @@
       <div class="kpi"><div class="v">36%</div><div class="l">Repeat share серпень</div></div>
       <div class="kpi"><div class="v">~13%</div><div class="l">Bolt+ у замовленнях</div></div>
     </div>
-    <p class="note">Bolt+ стабільний ~13% ордерів і ~12.5% MAU — не драйвер росту.
-       Ріст іде з нових grocery-юзерів (4.3k нових у серпні), не з підписки.</p>
+    <p class="note">4.3k користувачів уперше замовили у VARUS у серпні; 6.2k отримали
+      щонайменше одне замовлення. Bolt+ формує стабільні ~13% замовлень.</p>
   </section>
 
   <!-- ============ 4. Spend ============ -->
   <section class="slide">
-    <h2>5. Спенди кампаній — скільки інвестуємо</h2>
+    <h2>5. Разом інвестували €54k; 73% профінансував VARUS</h2>
     <h3>Campaign spend, тис. грн (local)</h3>
     <div class="chart" id="ch-spend"></div>
     <table>
@@ -351,15 +337,14 @@
         <tr class="hl"><td>Серпень</td><td class="r">436k</td><td class="r">8.4k</td><td class="r">842k</td><td class="r">16.3k</td><td class="r">4.2%</td></tr>
       </tbody>
     </table>
-    <p class="note">За чотири місяці Bolt вклав ~€14.5k, партнер ~€39.5k. У серпні Bolt-spend майже весь
-       у DF та AM (€6.2k DF, €7.8k AM; menu €2.2k; ULC activation €0.5k). Партнерська частка знижок
-       більша за Bolt — це варто сказати прямо: ми не «викуповуємо» GMV.</p>
+    <p class="note">Bolt вклав €14.5k, VARUS — €39.5k. Висновок: комерційний результат
+      створений спільно, але не «викуплений» бюджетом Bolt.</p>
   </section>
 
   <!-- ============ 5. Campaign efficiency ============ -->
   <section class="slide">
     <div class="section-kicker">Growth efficiency</div>
-    <h2>6. Кампанії: не лише spend, а результат</h2>
+    <h2>6. 76% серпневих замовлень мали campaign attribution</h2>
     <p class="lead">Стандарт партнерських MBR — показувати orders, users, AOV та cost per order.
       Нижче — атрибутовані кампаніям результати; це не causal incrementality.</p>
     <div class="kpis">
@@ -392,7 +377,7 @@
   <!-- ============ 7. Banner monetisation ============ -->
   <section class="slide" id="banners">
     <div class="section-kicker">Commercial next step</div>
-    <h2>7. Банерна підтримка: що ми давали й на яких умовах далі</h2>
+    <h2>7. In-app visibility підтримала масштабування; далі потрібен вимірюваний пакет</h2>
     <p class="lead">Видимість у додатку — головний драйвер трафіку на VARUS. Досі вона йшла
       як лонч-підтримка з боку Bolt. З Q4 це окремий комерційний продукт із бюджетом і KPI.</p>
 
@@ -418,7 +403,7 @@
     </div>
 
     <div class="callout warn">
-      <div class="ttl">Чому модель змінюється</div>
+      <div class="ttl">Рішення на Q4</div>
       Інвентар на головній обмежений, а в Q4–Q1 на платформі з’являться інші grocery-мережі.
       Пріоритет у видимості отримує партнер, який у неї інвестує. Лонч-період, коли банери
       покривались бюджетом Bolt, завершується — далі це платне розміщення з прозорим вимірюванням.
@@ -458,9 +443,9 @@
   <!-- ============ 8. Ops ============ -->
   <section class="slide" id="operations">
     <div class="section-kicker">Customer experience</div>
-    <h2>8. Операційка: DT та якість vs інші гравці</h2>
+    <h2>8. VARUS: 26.6% доставок &gt;45 хв проти 7.0% у пірів</h2>
     <div class="callout bad">
-      <div class="ttl">DT 45 хв — реальний розрив vs інші гравці</div>
+      <div class="ttl">Проблема виникає до передачі кур'єру</div>
       1 Jul – 26 Aug: VARUS DT p50 = 34.6 хв, avg = 40.2 хв, 26.6% delivered довше 45 хв.
       Інші 3P stores UA: p50 23.5 хв, лише 7% довше 45 хв. У серпні гірше: p50 35.8 / p90 70.2 / avg 42.5.
     </div>
@@ -484,12 +469,12 @@
 
   <section class="slide">
     <div class="section-kicker">Root causes</div>
-    <h2>9. Проблеми, які повторюються і не закриваються</h2>
+    <h2>9. За літо втрачено ≈₴0.91 млн через NDR понад benchmark</h2>
     <div class="kpis">
-      <div class="kpi bad"><div class="v">404</div><div class="l">OOS cancellations · Jul–Aug</div></div>
-      <div class="kpi bad"><div class="v">314k грн</div><div class="l">Втрачений GMV через OOS</div></div>
-      <div class="kpi warn"><div class="v">251</div><div class="l">Working-hours failures</div></div>
-      <div class="kpi warn"><div class="v">39</div><div class="l">Integration-system failures</div></div>
+      <div class="kpi bad"><div class="v">₴0.91 млн</div><div class="l">Avoidable GMV loss · Jun–26 Aug</div></div>
+      <div class="kpi bad"><div class="v">≈1,141</div><div class="l">Excess failed orders vs benchmark</div></div>
+      <div class="kpi warn"><div class="v">₴798</div><div class="l">Середній кошик цих замовлень</div></div>
+      <div class="kpi warn"><div class="v">3.2%</div><div class="l">Peer NDR benchmark</div></div>
     </div>
     <div class="cols2" style="margin-top:18px">
       <div class="box">
@@ -515,12 +500,15 @@
         </ul>
       </div>
     </div>
+    <p class="note">Метод: delivered orders × (VARUS failed/delivered − peer failed/delivered) ×
+      monthly AOV. Оцінка за Jun–26 Aug; округлення: Jun ≈228, Jul ≈168, Aug ≈745 excess failures.
+      Це conservative benchmark estimate, а не бухгалтерський write-off.</p>
   </section>
 
   <!-- ============ 8. Store hotspots ============ -->
   <section class="slide">
     <div class="section-kicker">Venue-level accountability</div>
-    <h2>10. Де саме втрачаємо: store hotspots</h2>
+    <h2>10. Шість магазинів концентрують найбільший операційний ризик</h2>
     <p class="lead">Серпень MTD. У стандартних MBR цей блок показують overall → city → venue,
       щоб проблема мала конкретного owner на рівні магазину.</p>
     <table>
@@ -547,7 +535,7 @@
   <!-- ============ 9. Quality and voice ============ -->
   <section class="slide">
     <div class="section-kicker">Availability & voice of customer</div>
-    <h2>11. Каталог виглядає здоровим — picking experience ні</h2>
+    <h2>11. 98% availability у фіді не перетворюється на наявність на полиці</h2>
     <div class="kpis">
       <div class="kpi good"><div class="v">~99%</div><div class="l">Merchant availability</div></div>
       <div class="kpi good"><div class="v">~98%</div><div class="l">SKU availability у каталозі</div></div>
@@ -585,7 +573,7 @@
 
   <!-- ============ 10. CVP ============ -->
   <section class="slide">
-    <h2>12. CVP — візуальний імпакт</h2>
+    <h2>12. CVP: сильна ціна й вибір нівелюються ненадійною доставкою</h2>
     <p>Те, що можна показати цифрами без Looker: більший кошик і більше людей, але гірший
        досвід доставки.</p>
     <div class="cols3">
@@ -621,7 +609,7 @@
 
   <!-- ============ 11. Pricing ============ -->
   <section class="slide">
-    <h2>13. Ціноутворення: чому «маркап ×2 vs офлайн»</h2>
+    <h2>13. Bolt не створює ×2 markup; розрив із полицею приходить у price feed</h2>
     <div class="callout good">
       <div class="ttl">Висновок з даних</div>
       Bolt не накручує другу націнку поверх фіду VARUS. Якщо клієнт бачить ×2 до полиці —
@@ -654,7 +642,7 @@
   <!-- ============ 12. Action plan ============ -->
   <section class="slide" id="actions">
     <div class="section-kicker">Joint business plan</div>
-    <h2>14. Екшн-план на 6 місяців (Sep 2026 – Feb 2027)</h2>
+    <h2>14. Шість місяців, щоб закріпити лідерство до появи нових партнерів</h2>
     <table>
       <thead><tr><th>Deadline</th><th>Action / success metric</th><th>Owner (драфт)</th><th>Статус</th></tr></thead>
       <tbody>
@@ -685,7 +673,7 @@
 
   <!-- ============ 13. Playbook ============ -->
   <section class="slide">
-    <h2>15. Playbook: наступні кроки при лончі інших гравців</h2>
+    <h2>15. Після запуску конкурентів VARUS має вигравати якістю, а не ексклюзивністю</h2>
     <table>
       <thead><tr><th>Урок VARUS</th><th>Що зробити на день 0 з наступним партнером</th></tr></thead>
       <tbody>
@@ -707,8 +695,8 @@
     </table>
   </section>
 
-  <!-- ============ Talk track (internal) ============ -->
-  <section class="slide">
+  <!-- Internal notes are kept in source but excluded from the CEO deck. -->
+  <section class="slide" hidden>
     <div class="section-kicker">Internal · не показувати партнеру</div>
     <h2>Як вести цю розмову</h2>
     <p class="lead">Порядок аргументів навмисно такий: спочатку визнаємо результат партнера,
@@ -750,7 +738,7 @@
   </section>
 
   <!-- ============ Missing ============ -->
-  <section class="slide">
+  <section class="slide" hidden>
     <h2>Ще немає в драфті — потрібні вхідні</h2>
     <div class="cols2">
       <div class="box">
@@ -786,7 +774,7 @@ const C = {
   red: '#e94b3b', amber: '#c99a3c', blue: '#2a8bee', line: '#e6ebe7', muted: '#6c7772'
 };
 
-const slides = [...document.querySelectorAll('.slide')];
+const slides = [...document.querySelectorAll('.slide:not([hidden])')];
 slides.forEach((slide, index) => {
   slide.dataset.page = `${index + 1} / ${slides.length}`;
 });
