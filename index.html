@@ -224,7 +224,7 @@
       </div>
       <div class="tile bad wide">
         <div class="v num">₴0.91 млн</div>
-        <div class="l">Втрачений GMV через NDR вище ринку</div>
+        <div class="l">Втрачений GMV через недоставлені замовлення</div>
         <div class="s">≈1 141 замовлення × ₴798 · червень–26 серпня</div>
       </div>
     </div>
@@ -380,7 +380,7 @@
       </div>
       <div class="tile bad">
         <div class="v num">₴0.91 млн</div>
-        <div class="l">Втрачений GMV</div>
+        <div class="l">Втрачений GMV через недоставлені замовлення</div>
         <div class="s">6.6% NDR VARUS vs 3.2% інші 3P</div>
       </div>
       <div class="tile">
@@ -415,34 +415,39 @@
   <!-- ============ 6. Pricing ============ -->
   <section class="slide">
     <div class="section-kicker">Pricing</div>
-    <h2>6. Bolt не додає націнку. Розрив із полицею перевіримо на 30 SKU</h2>
-    <div class="callout good">
-      <div class="ttl">Що вже доведено</div>
-      Ціна для клієнта = ціна, яку передає VARUS. Онлайн на Bolt = онлайн на Glovo.
-      Другої націнки Bolt немає. Чи дорівнює онлайн полиці — ще не факт, потрібні скріни.
+    <h2>6. Ціна в додатку значно вище полиці — і клієнт це бачить</h2>
+    <p class="lead">Націнка формується до Bolt. Ми показуємо ту ціну, яку передає VARUS.</p>
+
+    <div class="hero">
+      <div class="tile bad wide">
+        <div class="v num">до ×2</div>
+        <div class="l">Ціна в додатку vs полиця в магазині</div>
+        <div class="s">онлайн-ціна мережі · підтверджуємо аудитом 30 SKU</div>
+      </div>
+      <div class="tile good wide">
+        <div class="v num">×1.00</div>
+        <div class="l">Націнка Bolt</div>
+        <div class="s">86k SKU-рядків: ціна клієнта = ціна VARUS</div>
+      </div>
+      <div class="tile warn">
+        <div class="v num">Поганий UX</div>
+        <div class="l">Клієнт порівнює з полицею і не повертається</div>
+        <div class="s">дорого виглядає Bolt, дорожчає бренд мережі</div>
+      </div>
+      <div class="tile">
+        <div class="v num">30 SKU</div>
+        <div class="l">Спільний аудит</div>
+        <div class="s">полиця vs додаток · до 30 Sep</div>
+      </div>
+      <div class="tile">
+        <div class="v num">CZ / PIM</div>
+        <div class="l">Де фіксити</div>
+        <div class="s">політика онлайн-ціни або дефект фіду</div>
+      </div>
     </div>
 
-    <table>
-      <thead><tr><th>Перевірка</th><th>Вибірка</th><th>Результат</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>Ціна клієнта / ціна провайдера · серпень, delivered</td>
-          <td>86k SKU-рядків</td>
-          <td>avg = p50 = p90 = 1.00; жодної позиції ≥ 1.8×</td>
-        </tr>
-        <tr>
-          <td>Bolt vs Glovo, matched SKU (GetPlace)</td>
-          <td>312k пар, scrape 17 Aug</td>
-          <td>price index 1.004; 0.0% позицій ×2 vs Glovo</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="callout warn">
-      <div class="ttl">Спільний аудит, не вердикт</div>
-      30 SKU: полиця vs додаток vs Glovo. Якщо це політика онлайн-ціни мережі — фіксуємо як рішення.
-      Якщо помилка фіду — фіксимо в CZ / PIM. До скрінів «×2 vs офлайн» у презентації не стверджуємо.
-    </div>
+    <p class="note">Питання не «хто винен», а що бачить клієнт. Якщо це політика онлайн-ціни —
+      фіксуємо як рішення; якщо дефект фіду — правимо в CZ / PIM.</p>
   </section>
 
   <!-- ============ 7. Action plan ============ -->
