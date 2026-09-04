@@ -1,1 +1,682 @@
-{"message":"No commit found for the ref <branch-after-recalc>","documentation_url":"https://docs.github.com/v3/repos/contents/","status":"404"}
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VARUS × Bolt — Monthly Business Review · Aug 2026</title>
+<style>
+  :root {
+    --ink: #13211b;
+    --muted: #6c7772;
+    --faint: #97a49d;
+    --line: #e6ebe7;
+    --soft: #f3faf5;
+    --green: #0f9d5a;
+    --green-bright: #21c56d;
+    --lime: #b7e04a;
+    --mint: #e9f7ef;
+    --dark: #13211b;
+    --red: #e94b3b;
+    --red-soft: #fff3f0;
+    --amber: #a8761c;
+    --amber-soft: #fdf7ea;
+    --blue: #2a8bee;
+    --blue-deep: #1250c8;
+    --blue-soft: #f2f8fc;
+    --white: #fff;
+    --page-bg: #eceeec;
+    --shadow: 0 16px 50px rgba(19, 33, 27, .12);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--ink);
+    font-family: "Avenir Next", "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", "Mulish", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .toolbar {
+    position: fixed; z-index: 50; top: 16px; left: 50%;
+    width: min(980px, calc(100vw - 28px)); transform: translateX(-50%);
+    display: flex; align-items: center; gap: 10px; padding: 9px 10px;
+    border: 1px solid var(--line); border-radius: 14px;
+    background: rgba(255,255,255,.95); backdrop-filter: blur(14px);
+    box-shadow: 0 8px 30px rgba(19,33,27,.08);
+  }
+  .toolbar b { margin: 0 8px; font-size: 13px; white-space: nowrap; }
+  .toolbar a, .toolbar button {
+    min-height: 38px; display: inline-flex; align-items: center; justify-content: center;
+    padding: 0 13px; border: 1px solid var(--line); border-radius: 10px;
+    background: var(--white); color: var(--ink); font: inherit; font-size: 12px;
+    font-weight: 700; text-decoration: none; cursor: pointer; white-space: nowrap;
+  }
+  .toolbar a:hover { border-color: var(--green); }
+  .toolbar button { margin-left: auto; border: 0; background: var(--dark); color: #fff; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 94px 20px 80px; }
+  .slide {
+    position: relative;
+    background: var(--white);
+    width: 100%;
+    min-height: 720px;
+    overflow: hidden;
+    padding: 52px 68px 64px 76px;
+    margin-bottom: 26px;
+    box-shadow: var(--shadow);
+  }
+  .slide::before {
+    content: ""; position: absolute; top: 50%; left: 0; width: 9px; height: 214px;
+    transform: translateY(-50%); border-radius: 0 6px 6px 0;
+    background: linear-gradient(180deg, var(--green), var(--lime));
+  }
+  .slide::after {
+    content: attr(data-page) "  ·  VARUS × BOLT FOOD";
+    position: absolute; right: 68px; bottom: 24px; left: 76px;
+    padding-top: 12px; border-top: 1px solid var(--line);
+    color: var(--faint); font-size: 11px; font-weight: 700; letter-spacing: .08em;
+  }
+  .eyebrow {
+    display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+    font-size: 12px; font-weight: 700; letter-spacing: .02em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+  }
+  .pill { padding: 5px 11px; border-radius: 999px; background: var(--soft); color: var(--muted); }
+  .pill.on { background: linear-gradient(90deg, var(--green), var(--green-bright)); color: var(--white); }
+  .pill.mint { background: var(--mint); color: var(--dark); }
+  h1 { font-size: 38px; line-height: 1.15; margin: 0 0 10px; letter-spacing: -.025em; }
+  h2 { font-size: 27px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -.02em; }
+  h3 { font-size: 14px; margin: 22px 0 8px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+  p { margin: 0 0 10px; }
+  .lead { color: var(--muted); font-size: 15px; }
+  .num { font-variant-numeric: tabular-nums; }
+  .note { font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+  .callout {
+    border-radius: 14px; padding: 18px 20px; margin: 18px 0;
+    border: 1px solid var(--line); background: var(--soft);
+  }
+  .callout .ttl { font-weight: 700; margin-bottom: 6px; }
+  .callout.good { background: var(--mint); border-color: #bfe3cf; }
+  .callout.good .ttl { color: var(--dark); }
+  .callout.bad { background: var(--red-soft); border-color: #f2d5c9; }
+  .callout.bad .ttl { color: var(--red); }
+  .callout.warn { background: var(--amber-soft); border-color: #f0e2c4; }
+  .callout.warn .ttl { color: var(--amber); }
+  .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 18px 0 6px; }
+  .hero { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; margin: 26px 0 18px; }
+  .hero .tile {
+    grid-column: span 2; display: flex; flex-direction: column; justify-content: center;
+    min-height: 196px; padding: 24px 26px; border: 1px solid var(--line); border-radius: 18px;
+    background: var(--white);
+  }
+  .hero .tile.wide { grid-column: span 3; }
+  .hero .tile .v { font-size: 46px; font-weight: 800; line-height: 1.02; letter-spacing: -.03em; }
+  .hero .tile .l { margin-top: 10px; font-size: 15px; font-weight: 700; }
+  .hero .tile .s { margin-top: 6px; font-size: 12.5px; color: var(--muted); }
+  .hero .tile.good { background: var(--mint); border-color: #bfe3cf; }
+  .hero .tile.good .v { color: var(--green); }
+  .hero .tile.warn { background: var(--amber-soft); border-color: #f0e2c4; }
+  .hero .tile.warn .v { color: var(--amber); }
+  .hero .tile.bad { background: var(--red-soft); border-color: #f2d5c9; }
+  .hero .tile.bad .v { color: var(--red); }
+  .kpi { border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; background: var(--white); }
+  .kpi .v { font-size: 27px; font-weight: 800; letter-spacing: -.025em; }
+  .kpi .l { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+  .kpi.good .v { color: var(--green); }
+  .kpi.bad .v { color: var(--red); }
+  .kpi.warn .v { color: var(--amber); }
+  .cols2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .cols3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .box { border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; background: var(--white); }
+  .box .hd { font-weight: 700; font-size: 14px; margin-bottom: 10px; }
+  .box ul { margin: 0; padding-left: 18px; }
+  .box li { margin-bottom: 7px; font-size: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-top: 8px; }
+  th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink); background: var(--soft); font-weight: 800; }
+  td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.hl td { background: #f6fbf8; }
+  tr.warnrow td { background: var(--red-soft); }
+  .chart { margin-top: 6px; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); margin: 6px 0 2px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .metric-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 26px 0; }
+  .flow-step { position: relative; padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: var(--soft); }
+  .flow-step:not(:last-child)::after { content: "→"; position: absolute; right: -12px; top: 34%; z-index: 2; color: var(--green); font-size: 22px; font-weight: 800; }
+  .metric-flow.composition .flow-step::after { display: none; }
+  .flow-step .big { font-size: 29px; font-weight: 800; line-height: 1.05; }
+  .flow-step .small { color: var(--muted); font-size: 12px; margin-top: 8px; }
+  .section-kicker { display: inline-flex; gap: 10px; align-items: center; margin-bottom: 12px; color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+  .section-kicker::before { content: ""; width: 28px; height: 4px; border-radius: 3px; background: linear-gradient(90deg, var(--green), var(--lime)); }
+  .status { display: inline-flex; padding: 4px 9px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+  .status.red { color: var(--red); background: var(--red-soft); }
+  .status.amber { color: var(--amber); background: var(--amber-soft); }
+  .status.green { color: var(--green); background: var(--mint); }
+  .bar-list { display: grid; gap: 12px; margin-top: 16px; }
+  .bar-row { display: grid; grid-template-columns: 220px 1fr 48px; gap: 12px; align-items: center; font-size: 13px; }
+  .bar-track { height: 10px; overflow: hidden; border-radius: 999px; background: var(--line); }
+  .bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--green), var(--lime)); }
+  .hr { height: 1px; background: var(--line); margin: 24px 0; border: 0; }
+  footer { color: var(--muted); font-size: 12.5px; padding: 0 12px; }
+  @media (max-width: 860px) {
+    .toolbar { overflow-x: auto; justify-content: flex-start; }
+    .toolbar button { margin-left: 0; }
+    .kpis, .cols2, .cols3, .metric-flow, .hero { grid-template-columns: 1fr; }
+    .hero .tile, .hero .tile.wide { grid-column: span 1; min-height: 0; }
+    .hero .tile .v { font-size: 34px; }
+    .flow-step:not(:last-child)::after { display: none; }
+    .bar-row { grid-template-columns: 1fr; gap: 4px; }
+    .slide { min-height: 0; padding: 34px 24px 58px 32px; }
+    .slide::after { left: 32px; right: 24px; }
+    h1 { font-size: 26px; }
+  }
+  @media print {
+    body { background: #fff; }
+    .toolbar { display: none; }
+    .wrap { padding: 0; }
+    .slide { width: 1280px; height: 720px; min-height: 720px; margin: 0; box-shadow: none; page-break-after: always; break-after: page; }
+  }
+</style>
+</head>
+<body>
+<nav class="toolbar" aria-label="Навігація презентації">
+  <b>VARUS × Bolt · Aug 2026</b>
+  <a href="#results">Результати</a>
+  <a href="#customers">Клієнти</a>
+  <a href="#operations">Операційка</a>
+  <a href="#banners">Банери</a>
+  <a href="#actions">План</a>
+  <button type="button" onclick="window.print()">Export PDF</button>
+</nav>
+<div class="wrap">
+
+  <!-- ============ 0. Executive summary ============ -->
+  <section class="slide" id="results">
+    <div class="eyebrow">
+      <span class="pill on">Monthly Business Review</span>
+      <span class="pill mint">VARUS × Bolt Food UA</span>
+      <span class="pill">Дані до 26 Aug 2026</span>
+    </div>
+    <h1>План виконали разом. Далі вирішує досвід клієнта.</h1>
+    <p class="lead">Executive summary · травень–серпень 2026</p>
+
+    <div class="hero">
+      <div class="tile good">
+        <div class="v num">27.2 млн грн</div>
+        <div class="l">Загальний обʼєм продажів</div>
+        <div class="s">травень–серпень · 105% рампу</div>
+      </div>
+      <div class="tile good">
+        <div class="v num">6 526</div>
+        <div class="l">Кількість клієнтів</div>
+        <div class="s">активні у серпні · +34% MoM</div>
+      </div>
+      <div class="tile good">
+        <div class="v num">827 грн</div>
+        <div class="l">Середній чек</div>
+        <div class="s">серпень · 607 грн у травні</div>
+      </div>
+      <div class="tile warn wide">
+        <div class="v num">≈2 800</div>
+        <div class="l">Bad orders — недоставлені замовлення</div>
+        <div class="s">травень–серпень · NDR 6.8% проти 3.2% в інших мережах</div>
+      </div>
+      <div class="tile bad wide">
+        <div class="v num">₴0.91 млн</div>
+        <div class="l">Втрачений GMV через недоставлені замовлення</div>
+        <div class="s">≈1 141 замовлення × ₴798 · червень–26 серпня</div>
+      </div>
+    </div>
+
+    <p class="note">₴0.91 млн — це GMV замовлень понад ринковий рівень NDR, а не бухгалтерське
+      списання. Деталі: продажі — слайд 1, операційка — слайди 4–5.</p>
+  </section>
+
+  <!-- ============ 1. Sales vs ramp + launch ============ -->
+  <section class="slide">
+    <div class="section-kicker">Commercial performance</div>
+    <h2>1. Продажі: 105% сукупного рампу за чотири місяці</h2>
+    <p class="lead">Факт травень–серпень — 27.2 млн грн проти плану 26.0 млн грн.
+      План виконано в кожному місяці rollout.</p>
+
+    <h3>Delivered GMV vs ramp plan, млн грн</h3>
+    <div class="chart" id="ch-ramp"></div>
+
+    <table>
+      <thead><tr>
+        <th>Місяць</th><th class="r">План, млн</th><th class="r">Факт, млн</th>
+        <th class="r">% плану</th><th class="r">Замовлення</th><th class="r">AOV, грн</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Травень</td><td class="r">3.0</td><td class="r">3.75</td><td class="r">125%</td><td class="r">6 774</td><td class="r">607</td></tr>
+        <tr><td>Червень</td><td class="r">5.0</td><td class="r">5.22</td><td class="r">104%</td><td class="r">7 966</td><td class="r">698</td></tr>
+        <tr><td>Липень</td><td class="r">8.0</td><td class="r">7.96</td><td class="r">99%</td><td class="r">10 341</td><td class="r">809</td></tr>
+        <tr class="hl"><td>Серпень (26 днів)</td><td class="r">10.0</td><td class="r">10.28</td><td class="r">103%</td><td class="r">13 525</td><td class="r">827</td></tr>
+      </tbody>
+    </table>
+
+    <div class="cols3" style="margin-top:16px">
+      <div class="kpi good"><div class="v">22×</div><div class="l">Зростання GMV у перший місяць лончу</div></div>
+      <div class="kpi"><div class="v">11 міст · ~55</div><div class="l">Покриття та активні магазини</div></div>
+      <div class="kpi good"><div class="v">+36%</div><div class="l">AOV: 607 → 827 грн</div></div>
+    </div>
+
+    <p class="note">Ріст іде і від трафіку, і від кошика. Run-rate серпня ≈12.2 млн грн.
+      Це спільний результат: мережа, промо VARUS і лонч-підтримка Bolt. Ramp 3 / 5 / 8 / 10 млн грн —
+      робочий план, підтвердити за контрактом.</p>
+  </section>
+
+  <!-- ============ 2. Users + Bolt+ ============ -->
+  <section class="slide" id="customers">
+    <div class="section-kicker">Customer base</div>
+    <h2>2. 6.5k активних клієнтів; 4.3k із них — уперше у VARUS</h2>
+    <p class="lead">Ріст дають нові grocery-клієнти, а не підписка. Bolt+ — стабільне лояльне ядро.</p>
+
+    <div class="metric-flow composition">
+      <div class="flow-step"><div class="big">6 526</div><div class="small">Активні юзери · серпень</div></div>
+      <div class="flow-step"><div class="big">4 262</div><div class="small">Прийшли вперше у VARUS</div></div>
+      <div class="flow-step"><div class="big">6 177</div><div class="small">Активувались · ≥1 delivered</div></div>
+      <div class="flow-step"><div class="big">2 346</div><div class="small">Repeat · ≥2 замовлення</div></div>
+    </div>
+
+    <h3>Активні, нові та активовані юзери</h3>
+    <div class="chart" id="ch-users"></div>
+
+    <div class="cols3" style="margin-top:16px">
+      <div class="kpi good"><div class="v">+34%</div><div class="l">MAU липень → серпень</div></div>
+      <div class="kpi"><div class="v">36%</div><div class="l">Repeat share · серпень</div></div>
+      <div class="kpi"><div class="v">806 · ~13%</div><div class="l">Bolt+ юзери та їх частка замовлень</div></div>
+    </div>
+
+    <p class="note">Bolt+ тримається ~13% замовлень — найлояльніший шар, не драйвер росту.
+      Актив, який варто захистити: 36% repeat. Саме повторні клієнти першими йдуть,
+      якщо доставка довга або замовлення зривається.</p>
+  </section>
+
+  <!-- ============ 3. Investment + in-app visibility ============ -->
+  <section class="slide" id="banners">
+    <div class="section-kicker">Joint investment</div>
+    <h2>3. Хто скільки вклав у промо: €54k разом</h2>
+    <p class="lead">Травень–серпень 2026 · дисконт на товари від VARUS і видимість / CRM від Bolt</p>
+
+    <div class="hero">
+      <div class="tile wide">
+        <div class="v num">€39.5k</div>
+        <div class="l">Вклав VARUS</div>
+        <div class="s">₴2.03 млн · це дисконт на товари, який VARUS передавав Bolt</div>
+      </div>
+      <div class="tile wide good">
+        <div class="v num">€14.5k</div>
+        <div class="l">Вклав Bolt</div>
+        <div class="s">₴747k · 27% · переважно видимість у додатку та CRM</div>
+      </div>
+      <div class="tile">
+        <div class="v num">€54k</div>
+        <div class="l">Разом</div>
+        <div class="s">₴2.78 млн за чотири місяці · лише промо на товари та видимість</div>
+      </div>
+      <div class="tile">
+        <div class="v num">2.7 : 1</div>
+        <div class="l">Співвідношення VARUS до Bolt</div>
+        <div class="s">партнер інвестує майже втричі більше дисконтом на SKU</div>
+      </div>
+      <div class="tile">
+        <div class="v num">4.2%</div>
+        <div class="l">Spend Bolt до GMV · серпень</div>
+        <div class="s">2.9% у травні — це лонч-інвестиція, не постійна опція</div>
+      </div>
+    </div>
+
+    <p class="note">У ці €54k <b>не входить</b> окрема сума інвестицій Bolt у доставку під час public launch.
+      Тут лише промо: товарний дисконт VARUS + видимість/CRM Bolt. Комерційний результат
+      створений спільно і не «викуплений» бюджетом Bolt. Rate card на Q4 принесемо окремо;
+      бюджет на цій зустрічі не фіксуємо.</p>
+  </section>
+
+  <!-- ============ 4. Delivery time ============ -->
+  <section class="slide" id="operations">
+    <div class="section-kicker">Customer experience</div>
+    <h2>4. Кожне 4-те замовлення довше 45 хв — у пірів кожне 14-те</h2>
+    <div class="callout warn">
+      <div class="ttl">Розрив є. Причину розкладемо разом, не списуємо «на кур'єра» чи «на магазин»</div>
+      Той самий кур'єрський пул: Партнер 1 — 23.5 хв, VARUS — 34.6 хв. Формат гіпермаркету
+      пояснює частину різниці, але не 26.6% vs 7% за межею 45 хв. Наступний крок Bolt:
+      розкласти DT на прийняття / зборку / очікування кур'єра — і тоді видно, де важіль.
+    </div>
+
+    <h3>Delivery time p50, хв · 1 Jul – 26 Aug · delivered</h3>
+    <div class="chart" id="ch-dt"></div>
+
+    <table>
+      <thead><tr>
+        <th>Мережа</th><th class="r">Ордери</th><th class="r">NDR</th>
+        <th class="r">DT p50, хв</th><th class="r">% &gt; 45 хв</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Партнер 1</td><td class="r">39 734</td><td class="r">3.2%</td><td class="r">23.5</td><td class="r">7.0%</td></tr>
+        <tr><td>Партнер 2</td><td class="r">9 694</td><td class="r">1.3%</td><td class="r">26.8</td><td class="r">16.1%</td></tr>
+        <tr><td>Партнер 3</td><td class="r">1 469</td><td class="r">4.8%</td><td class="r">26.7</td><td class="r">11.8%</td></tr>
+        <tr class="warnrow"><td><b>VARUS</b></td><td class="r">23 866</td><td class="r">6.6%</td><td class="r">34.6</td><td class="r">26.6%</td></tr>
+      </tbody>
+    </table>
+
+    <p class="note">У серпні гірше, не краще: p50 35.8 хв, avg 42.5 хв, p90 70.2 хв.
+      Ціль, яку пропонуємо узгодити: p50 ≤ 30 хв, частка &gt;45 хв ≤ 12%.</p>
+  </section>
+
+  <!-- ============ 5. Operational losses ============ -->
+  <section class="slide">
+    <div class="section-kicker">Business impact</div>
+    <h2>5. Через те, що немає кому збирати, зриваються замовлення</h2>
+    <p class="lead">Основний драйвер скасувань — не каталог і не кур'єр, а зборка в магазині.
+      Розрив vs NDR пірів 3.2% за 1 Jun – 26 Aug.</p>
+
+    <div class="hero">
+      <div class="tile warn">
+        <div class="v num">≈1 141</div>
+        <div class="l">Втрачених замовлень</div>
+        <div class="s">понад ринковий рівень NDR</div>
+      </div>
+      <div class="tile bad">
+        <div class="v num">₴0.91 млн</div>
+        <div class="l">Втрачений GMV через недоставлені замовлення</div>
+        <div class="s">6.6% NDR VARUS vs 3.2% інші 3P</div>
+      </div>
+      <div class="tile">
+        <div class="v num">₴798</div>
+        <div class="l">Середній чек</div>
+        <div class="s">цих недоїхавших замовлень</div>
+      </div>
+    </div>
+
+    <div class="cols2">
+      <div class="box">
+        <div class="hd">Основні причини</div>
+        <ul>
+          <li><b>OOS під час зборки:</b> 404 фейли, ₴314k. Каталог зелений, полиця порожня.</li>
+          <li><b>Години та відмови збирати:</b> 251 фейл, ₴242k. Тягнеться з травня, пік увечері — немає кого ставити на picking.</li>
+          <li><b>NDR не стабілізувався:</b> 8.4% → 5.8% → 4.7% → знову 8.1% у серпні.</li>
+          <li><b>ODR ~50%</b> при 98% SKU availability у фіді — дефект на picking, не в меню.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="hd">Що означають показники</div>
+        <ul>
+          <li><b>NDR</b> — Non-Delivery Rate: частка замовлень, які не доїхали до клієнта (скасовані / failed). У VARUS 6.6% проти 3.2% в інших 3P.</li>
+          <li><b>ODR</b> — Order Defect Rate: частка замовлень із дефектом комплектації (немає SKU, заміна, помилка picking). ~50% при зеленому фіді означає, що проблема не в меню.</li>
+        </ul>
+        <p class="note" style="margin-top:12px;margin-bottom:0">Метод втрат: delivered × (NDR VARUS − NDR пірів) × AOV місяця.
+          Це розрив vs benchmark, не write-off у фінансах.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. Action plan ============ -->
+  <section class="slide" id="actions">
+    <div class="section-kicker">Joint business plan</div>
+    <h2>6. Що покращуємо далі</h2>
+    <p class="lead">Без дат. Спочатку досвід клієнта, потім видимість.</p>
+
+    <div class="cols2" style="margin-top:18px">
+      <div class="box">
+        <div class="hd" style="color:var(--amber)">Що має покращити VARUS</div>
+        <ul>
+          <li><b>Staffing і зборка.</b> Owner на критичних магазинах, вечірні зміни — немає кому збирати, зриваються замовлення.</li>
+          <li><b>Реальні години.</b> Години прийому в додатку = години, коли реально збирають.</li>
+          <li><b>OOS на полиці.</b> Каталог зелений, товар відсутній — це NDR і ODR, не меню.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="hd" style="color:var(--green)">Що покращуємо ми і VARUS разом</div>
+        <ul>
+          <li><b>Delivery time.</b> Bolt розкладає DT на прийняття / зборку / очікування кур'єра. Ціль: p50 ≤ 30 хв, частка &gt;45 хв ≤ 12%.</li>
+          <li><b>Інтеграції.</b> POS 500, pickup-код, фіди стоків і цін — спільний backlog з CZ.</li>
+          <li><b>Прозорість.</b> Один weekly pack: GMV vs план, NDR, DT, OOS — не Slack.</li>
+          <li><b>Видимість після лончу.</b> Bolt дає rate card in-app на Q4; рішення по пакету — разом, після rate card.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout good" style="margin-top:20px">
+      <div class="ttl">Чому це важливо зараз</div>
+      VARUS — єдиний великий grocery у Food Delivery. Хто першим закриє швидкість і наявність,
+      той лишиться default-вибором, коли з’являться інші мережі.
+    </div>
+  </section>
+
+  <!-- Internal notes are kept in source but excluded from the CEO deck. -->
+  <section class="slide" hidden>
+    <div class="section-kicker">Internal · не показувати партнеру</div>
+    <h2>Як вести цю розмову</h2>
+    <p class="lead">Порядок: спочатку визнаємо спільний результат, далі розрив як спільну
+      проблему з розподілом «ми / ви», і лише після цього — видимість після лончу.
+      Не починати з бюджету і не говорити «ви втратили мільйон».</p>
+
+    <div class="cols2">
+      <div class="box">
+        <div class="hd">Тон по слайдах</div>
+        <ul>
+          <li><b>Слайди 1–6:</b> «ви перевиконали план, ось чим ми допомогли» — партнер має почути
+              визнання цифрами, а не комплімент.</li>
+          <li><b>Слайд 7:</b> перехід до грошей саме тут, поки на екрані ще ефект від кампаній.</li>
+          <li><b>Слайди 8–11:</b> без евфемізмів, але завжди з бенчмарком пірів —
+              це переводить розмову з «ви погані» на «ось нормальний рівень ринку».</li>
+          <li><b>Слайди 14–15:</b> owner і дата на кожному пункті, інакше зустріч не має ефекту.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="hd">Очікувані заперечення та відповіді</div>
+        <ul>
+          <li><b>«DT — це ваші кур’єри»:</b> у Партнера 1 із тим самим кур’єрським пулом
+              p50 23.5 хв. Розрив утворюється до передачі кур’єру — на зборці.</li>
+          <li><b>«Банери ж були безкоштовні»:</b> вони були частиною лонч-інвестиції Bolt
+              (4.2% GMV у серпні). Лонч закінчився, інвентар обмежений, партнерів стає більше.</li>
+          <li><b>«Ціни — це не ми»:</b> дані підтверджують, що Bolt не додає націнки; саме тому
+              питання полиці лишається на стороні мережі.</li>
+          <li><b>«Дайте більше промо»:</b> partner spend уже вдвічі більший за Bolt —
+              подальше зростання GMV дешевше купити зниженням NDR, ніж знижками.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <div class="ttl">Перед відправкою партнеру</div>
+      Видалити цей слайд і слайд із вхідними, підтвердити рамп-план і ставки ads-пакету,
+      а також узгодити з ads-командою формулювання про платні розміщення.
+    </div>
+  </section>
+
+  <!-- ============ Missing ============ -->
+  <section class="slide" hidden>
+    <h2>Ще немає в драфті — потрібні вхідні</h2>
+    <div class="cols2">
+      <div class="box">
+        <div class="hd">Дані</div>
+        <ul>
+          <li>Банерна підтримка в додатку: impressions та incremental GMV немає в Databricks —
+              потрібен витяг з ads / #ua-sales-retail-ads.</li>
+          <li>Rate card ads-пакету (слайд 7): формати, мінімальні бюджети, умови для sponsored SKU.</li>
+          <li>Офіційний рамп і KPI з контракту (зараз гіпотеза 3 / 5 / 8 / 10 млн грн).</li>
+          <li>Looker CVP / ODR — MCP недоступний на момент збірки.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="hd">Матеріали</div>
+        <ul>
+          <li>Скріни 20 SKU: полиця vs Bolt — для слайду про ×2.</li>
+          <li>Список CZ-тікетів зі статусами та датами.</li>
+          <li>Дата завершення FD-імпакту та лонч наступного гравця.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Monthly Business Review · VARUS × Bolt Food UA · дані до 26 Aug 2026 ·
+    джерело: Databricks (dim_order_delivery, dim_basket_item_delivery, GetPlace)
+  </footer>
+</div>
+
+<script>
+const C = {
+  green: '#0f9d5a', mint: '#8fd3b3', grey: '#a9b7b0', greyDark: '#6c7772',
+  red: '#e94b3b', amber: '#c99a3c', blue: '#2a8bee', line: '#e6ebe7', muted: '#6c7772'
+};
+
+const slides = [...document.querySelectorAll('.slide:not([hidden])')];
+slides.forEach((slide, index) => {
+  slide.dataset.page = `${index + 1} / ${slides.length}`;
+});
+
+function fmt(v) {
+  if (Math.abs(v) >= 1000) return v.toLocaleString('uk-UA');
+  return String(Math.round(v * 100) / 100);
+}
+
+function axisTicks(max, count) {
+  const step = max / count;
+  const out = [];
+  for (let i = 0; i <= count; i++) out.push(step * i);
+  return out;
+}
+
+function niceMax(max) {
+  const mag = Math.pow(10, Math.floor(Math.log10(max)));
+  const n = Math.ceil(max / (mag / 2)) * (mag / 2);
+  return n === max ? max + mag / 2 : n;
+}
+
+// ---- generic frame -------------------------------------------------
+function frame(opts) {
+  const W = 960, H = opts.height || 260;
+  const padL = opts.padL || 52, padR = 18, padT = 14, padB = 34;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const max = opts.max;
+  const ticks = axisTicks(max, 4);
+  let g = '';
+  ticks.forEach(t => {
+    const y = padT + plotH - (t / max) * plotH;
+    g += `<line x1="${padL}" y1="${y.toFixed(1)}" x2="${W - padR}" y2="${y.toFixed(1)}" stroke="${C.line}" stroke-width="1"/>`;
+    g += `<text x="${padL - 8}" y="${(y + 4).toFixed(1)}" text-anchor="end" font-size="11" fill="${C.muted}">${fmt(t)}</text>`;
+  });
+  return { W, H, padL, padR, padT, padB, plotW, plotH, grid: g, max };
+}
+
+function xLabels(f, cats) {
+  const bw = f.plotW / cats.length;
+  return cats.map((c, i) => {
+    const x = f.padL + bw * i + bw / 2;
+    return `<text x="${x.toFixed(1)}" y="${f.padT + f.plotH + 20}" text-anchor="middle" font-size="11" fill="${C.muted}">${c}</text>`;
+  }).join('');
+}
+
+function legend(series) {
+  return '<div class="legend">' + series.map(s =>
+    `<span><i class="dot" style="background:${s.color}"></i>${s.name}</span>`).join('') + '</div>';
+}
+
+// ---- line chart ----------------------------------------------------
+function lineChart(el, cfg) {
+  const all = cfg.series.flatMap(s => s.data);
+  const max = niceMax(Math.max.apply(null, all));
+  const f = frame({ height: cfg.height, max: max });
+  const bw = f.plotW / cfg.categories.length;
+  const px = i => f.padL + bw * i + bw / 2;
+  const py = v => f.padT + f.plotH - (v / max) * f.plotH;
+
+  let body = '';
+  cfg.series.forEach(s => {
+    const pts = s.data.map((v, i) => `${px(i).toFixed(1)},${py(v).toFixed(1)}`).join(' ');
+    if (cfg.fill) {
+      body += `<polygon points="${px(0).toFixed(1)},${(f.padT + f.plotH).toFixed(1)} ${pts} ${px(s.data.length - 1).toFixed(1)},${(f.padT + f.plotH).toFixed(1)}" fill="${s.color}" opacity="0.12"/>`;
+    }
+    body += `<polyline points="${pts}" fill="none" stroke="${s.color}" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>`;
+    body += s.data.map((v, i) =>
+      `<circle cx="${px(i).toFixed(1)}" cy="${py(v).toFixed(1)}" r="3.4" fill="#fff" stroke="${s.color}" stroke-width="2"><title>${s.name}: ${fmt(v)}</title></circle>`).join('');
+  });
+
+  el.innerHTML = (cfg.series.length > 1 ? legend(cfg.series) : '') +
+    `<svg viewBox="0 0 ${f.W} ${f.H}" width="100%" role="img">${f.grid}${body}${xLabels(f, cfg.categories)}</svg>`;
+}
+
+// ---- bar chart -----------------------------------------------------
+function barChart(el, cfg) {
+  const stacked = !!cfg.stacked;
+  let max;
+  if (stacked) {
+    max = niceMax(Math.max.apply(null, cfg.categories.map((c, i) =>
+      cfg.series.reduce((a, s) => a + s.data[i], 0))));
+  } else {
+    max = niceMax(Math.max.apply(null, cfg.series.flatMap(s => s.data).concat(cfg.refLine ? [cfg.refLine.value] : [])));
+  }
+  const f = frame({ height: cfg.height, max: max });
+  const slot = f.plotW / cfg.categories.length;
+  const groupW = slot * 0.6;
+  const n = stacked ? 1 : cfg.series.length;
+  const barW = groupW / n;
+  const py = v => f.padT + f.plotH - (v / max) * f.plotH;
+
+  let body = '';
+  cfg.categories.forEach((cat, i) => {
+    const x0 = f.padL + slot * i + (slot - groupW) / 2;
+    if (stacked) {
+      let acc = 0;
+      cfg.series.forEach(s => {
+        const v = s.data[i];
+        const hh = py(acc) - py(acc + v);
+        body += `<rect x="${x0.toFixed(1)}" y="${py(acc + v).toFixed(1)}" width="${groupW.toFixed(1)}" height="${Math.max(hh, 0).toFixed(1)}" fill="${s.color}" rx="2"><title>${cat} · ${s.name}: ${fmt(v)}</title></rect>`;
+        acc += v;
+      });
+    } else {
+      cfg.series.forEach((s, si) => {
+        const v = s.data[i];
+        const x = x0 + barW * si;
+        const y = py(v);
+        body += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(barW - 3).toFixed(1)}" height="${(f.padT + f.plotH - y).toFixed(1)}" fill="${s.color}" rx="2"><title>${cat} · ${s.name}: ${fmt(v)}</title></rect>`;
+        if (cfg.showValues) {
+          body += `<text x="${(x + (barW - 3) / 2).toFixed(1)}" y="${(y - 5).toFixed(1)}" text-anchor="middle" font-size="11" font-weight="600" fill="${C.muted}">${fmt(v)}</text>`;
+        }
+      });
+    }
+  });
+
+  if (cfg.refLine) {
+    const y = py(cfg.refLine.value);
+    body += `<line x1="${f.padL}" y1="${y.toFixed(1)}" x2="${f.W - f.padR}" y2="${y.toFixed(1)}" stroke="${C.red}" stroke-width="1.6" stroke-dasharray="6 4"/>`;
+    body += `<text x="${f.W - f.padR - 4}" y="${(y - 6).toFixed(1)}" text-anchor="end" font-size="11" font-weight="700" fill="${C.red}">${cfg.refLine.label}</text>`;
+  }
+
+  el.innerHTML = (cfg.series.length > 1 ? legend(cfg.series) : '') +
+    `<svg viewBox="0 0 ${f.W} ${f.H}" width="100%" role="img">${f.grid}${body}${xLabels(f, cfg.categories)}</svg>`;
+}
+
+// ---- render --------------------------------------------------------
+barChart(document.getElementById('ch-ramp'), {
+  categories: ['Травень', 'Червень', 'Липень', 'Серпень (26д)'],
+  series: [
+    { name: 'План (гіпотеза)', color: C.grey, data: [3, 5, 8, 10] },
+    { name: 'Факт', color: C.green, data: [3.75, 5.22, 7.96, 10.28] }
+  ],
+  showValues: true, height: 250
+});
+
+lineChart(document.getElementById('ch-users'), {
+  categories: ['Травень', 'Червень', 'Липень', 'Серпень'],
+  series: [
+    { name: 'MAU', color: C.blue, data: [3951, 3757, 4882, 6526] },
+    { name: 'Нові на VARUS', color: C.grey, data: [3906, 2763, 3324, 4262] },
+    { name: 'З delivered', color: C.green, data: [3679, 3571, 4704, 6177] }
+  ],
+  height: 250
+});
+
+barChart(document.getElementById('ch-dt'), {
+  categories: ['Партнер 1', 'Партнер 2', 'Партнер 3', 'VARUS'],
+  series: [{ name: 'DT p50, хв', color: C.amber, data: [23.5, 26.8, 26.7, 34.6] }],
+  refLine: { value: 45, label: '45 хв' },
+  showValues: true, height: 250
+});
+</script>
+</body>
+</html>
