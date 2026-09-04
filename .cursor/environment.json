@@ -1,0 +1,16 @@
+{
+  "name": "VARUS MBR deck",
+  "chromeExecutablePath": "/usr/bin/google-chrome-stable",
+  "install": "command -v databricks >/dev/null 2>&1 || curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sudo sh",
+  "start": "if [ -n \"$DATABRICKS_HOST\" ] && [ -n \"$DATABRICKS_TOKEN\" ]; then printf '[DEFAULT]\\nhost = %s\\ntoken = %s\\n\\n[bolt-data]\\nhost = %s\\ntoken = %s\\n' \"$DATABRICKS_HOST\" \"$DATABRICKS_TOKEN\" \"$DATABRICKS_HOST\" \"$DATABRICKS_TOKEN\" > \"$HOME/.databrickscfg\" && chmod 600 \"$HOME/.databrickscfg\"; fi",
+  "ports": [
+    { "name": "deck", "port": 8080 }
+  ],
+  "terminals": [
+    {
+      "name": "deck-server",
+      "command": "python3 -m http.server 8080 --bind 0.0.0.0",
+      "description": "Serves the self-contained MBR deck (index.html) at http://localhost:8080/. Open it in a browser to preview slides and JS-rendered charts."
+    }
+  ]
+}
