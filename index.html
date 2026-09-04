@@ -103,6 +103,8 @@
   .callout.warn { background: var(--amber-soft); border-color: #f0e2c4; }
   .callout.warn .ttl { color: var(--amber); }
   .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 18px 0 6px; }
+  .kpis.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .kpis.five .kpi .v { font-size: 24px; }
   .kpi { border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; background: var(--white); }
   .kpi .v { font-size: 27px; font-weight: 800; letter-spacing: -.025em; }
   .kpi .l { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
@@ -183,28 +185,17 @@
     <h1>План виконали разом. Далі вирішує досвід клієнта.</h1>
     <p class="lead">Executive summary · травень–серпень 2026</p>
 
-    <div class="kpis">
-      <div class="kpi good"><div class="v">105%</div><div class="l">Виконання рампу · травень–серпень</div></div>
-      <div class="kpi good"><div class="v">6 526</div><div class="l">Активних клієнтів · серпень</div></div>
-      <div class="kpi warn"><div class="v">₴0.91 млн</div><div class="l">Розрив GMV vs NDR пірів</div></div>
-      <div class="kpi warn"><div class="v">26.6%</div><div class="l">Замовлень довше 45 хв</div></div>
+    <div class="kpis five">
+      <div class="kpi good"><div class="v">27.2 млн грн</div><div class="l">Продажі GMV · травень–серпень</div></div>
+      <div class="kpi good"><div class="v">6 526</div><div class="l">Клієнтів · активні, серпень</div></div>
+      <div class="kpi good"><div class="v">827 грн</div><div class="l">Середній чек · серпень</div></div>
+      <div class="kpi warn"><div class="v">≈2 800</div><div class="l">Bad orders · NDR 6.8%</div></div>
+      <div class="kpi bad"><div class="v">₴0.91 млн</div><div class="l">Втрачений GMV vs NDR пірів</div></div>
     </div>
 
-    <div class="callout good">
-      <div class="ttl">Три речі, які варто закрити на цій зустрічі</div>
-      <ol style="margin:6px 0 0;padding-left:20px">
-        <li style="margin-bottom:5px"><b>Три магазини + вечірня зборка.</b> Owner, staffing і реальні
-          години прийому. Ціль: DT p50 ≤ 30 хв, NDR ≤ 8% на цих точках за два тижні.</li>
-        <li style="margin-bottom:5px"><b>Спільний IT-backlog.</b> POS 500, pickup-код, фіди стоків і цін —
-          статуси, SLA і хто що фіксить. Не ультиматум, а список із датами.</li>
-        <li><b>Видимість після лончу.</b> Bolt принесе rate card на Q4. Сьогодні фіксуємо лише
-          принцип: лонч-підтримка закінчилась, далі — вимірюваний пакет, частину можна покрити co-op.</li>
-      </ol>
-    </div>
-
-    <p class="note">Комерційно партнерство випереджає план. Обмежувач — швидкість, надійність
-      і фактична наявність під час зборки. ₴0.91 млн — це GMV, який не доїхав через NDR вище
-      ринку (3.2%), а не бухгалтерське списання.</p>
+    <p class="note">Продажі та бед-ордери — травень–серпень (38.6k delivered). Чек і клієнти — серпень.
+      ₴0.91 млн = GMV замовлень понад ринковий NDR 3.2% за червень–26 серпня (~1 141 ордери × ₴798),
+      не бухгалтерське списання. Деталі — на слайдах 1 і 5.</p>
   </section>
 
   <!-- ============ 1. Sales vs ramp + launch ============ -->
